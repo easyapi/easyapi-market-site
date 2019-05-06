@@ -38,7 +38,6 @@ EasyAPI服务站点，是一个纯静态项目工程。
 | easyapi-weather     |  EasyAPI天气预报           |
 | easyapi-withdraw    |  EasyAPI快速提现           |
 | easyapi-yuyin       |  EasyAPI语音服务           |
-| easyapi-www         |  EasyAPI官网               |
 
     
 ## 常见问题
