@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>服务市场 - 积分商城</title>
+    <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
+    <meta name="descriptions" content="EasyAPI帮助中心"/>
+    <meta name="keywords" content="帮助中心,视频教程"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <style>
+        .upbx {
+            display: inline-block;
+            float: left;
+            position: relative;
+            padding-top: 5px;
+        }
+        .upbx a {
+            margin-left: 0px;
+            padding-right: 0px;
+        }
+        .upbx a:hover {
+            border: 0px;
+        }
+        .upbx .console {
+            border: 1px solid #fff;
+            border-radius: 6px;
+            height: 32px;
+            line-height: 30px;
+            margin-top: 4px;
+        }
+        .upbx i {
+            color: #fff;
+            font-size: 20px;
+            width: 50px;
+        }
+        .upbx em {
+            position: absolute;
+            top: 10px;
+            color: #fff;
+            font-size: 12px;
+            background: red;
+            border-radius: 50%;
+            left: 50px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+        }
+        .upbx img {
+            margin: 20px 5px 0 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            float: right;
+        }
+        .upbx .ov {
+            top: 50px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 3px 3px #ddd;
+            display: none;
+            width: 100%;
+            overflow: hidden;
+            line-height: 38px;
+            position: absolute;
+            background: #fff;
+            border-radius: 6px;
+        }
+        .upbx .ov a {
+            color: gray;
+            display: block;
+            font-size: 1.4rem;
+            padding: 0 20px;
+            line-height: 38px;
+            height: 38px;
+        }
+        .upbx .ov a:hover {
+            background: #18c1d6;
+            color: #Fff;
+        }
+        .navs {
+            line-height: 68px;
+            font-size: 1.6rem;
+            height: 58px;
+        }
+        .navs a {
+            color: #fff;
+            margin-left: 20px;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        .navs a:hover {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .navs .prolayer {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            left: 50%;
+            margin-left: -90px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            position: absolute;
+            width: 180px;
+            background: white;
+            border-radius: 6px;
+        }
+        .navs .prolayer a {
+            color: #4d5e6f;
+            display: block;
+            line-height: 40px;
+            margin: 0px;
+            padding: 0 15px;
+            text-align: center;
+        }
+        .navs .prolayer a:hover {
+            text-decoration: underline;
+        }
+        .navs span {
+            display: inline-block;
+            color: #fff;
+            margin-left: 20px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .navs span:hover {
+            border-bottom: 2px solid #fff;
+        }
+        .navs span:hover .prolayer {
+            display: block;
+        }
+        .f-fr{
+            float:right;
+        }
+        .f-fl{
+            float:left;
+        }
+        .console_box{
+            width:500px;
+            overflow: hidden;
+            float:right;
+
+        }
+        .dis_hide{
+            display:none;
+        }
+        .news_block{
+            overflow: hidden;
+        }
+        .news_list{
+            padding: 80px 0;
+            overflow: hidden;
+        }
+        .grey_bd{
+            background-color: #f8f8f9;
+        }
+        .set_with{
+            width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .set_with li:first-child{
+            width: 60%;
+        }
+        .set_with li:last-child{
+            width: 40%;
+        }
+
+        .set_with li p{
+            font-size: 14px;
+            line-height: 30px;
+        }
+        .set_with li p span{
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #18c1d6;
+            margin-right: 5px;
+
+        }
+        .set_with li p:first-child{
+            font-size: 36px;
+            padding-bottom: 15px;
+            line-height: 40px;
+        }
+        .notificatin{
+            padding: 76px 0;
+            height: 181px;
+        }
+        .notificatin p{
+            padding-bottom: 30px;
+        }
+        .notificatin span{
+            font-size: 18px;
+            color: #828282;
+            line-height: 30px;
+        }
+        .jifen_list{
+            margin-top: 80px;
+        }
+        .jifen_list li{
+            float: left;
+            height: 417px;
+
+        }
+        .jifen_list li img{
+            width: 100%;
+        }
+        .jifen_list li:first-child{
+            width: 25%;
+            margin-right: 5px;
+
+        }
+        .jifen_list li:last-child{
+            width: 25%;
+            margin-left: 5px;
+        }
+        .u-footer a{
+            padding: 0 15px;
+        }
+
+    </style>
+</head>
+
+<body class="">
+    <div class="header_bg" style="background-image:url(images/bg_mall_banner.png)">
+        <div class="x-wp">
+            <div class="m-header f-cb">
+                <div class="f-fl u-site">
+                    <a href="" class=""><img src="https://static.easyapi.com/images/market/logo.png"></a>
+                    <span>&nbsp;·&nbsp; <a href="/">积分商城</a></span>
+                </div>
+                <div class="console_box">
+                    <div class="navs f-fr dis_hide" id="avatar">
+                        <div class="upbx">
+                            <a class="f-fr" href="/console/" style="margin-top:-15px;">
+                                <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="f-fr u-nav dis_hide" id="console">
+                        <a href="/console/" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">控制台</a>
+                    </div>
+
+                    <div class="f-fr u-nav" style="margin-right:20px;" id="login">
+                        <a href="https://account.easyapi.com/signup">注册</a>
+                        <a href="https://account.easyapi.com/login">登录</a>
+                    </div>
+                    <div class="f-fr u-nav" style="margin-right:10px;">
+                        <a href="">文档</a>
+                    </div>
+                </div>
+            </div>
+            <div class="u-info f-tal" style="margin-top:180px;text-align: center">
+                <p class="f-ff48 title" style="font-size: 48px;">独立可部署积分商城解决方案</p>
+                <p class="f-ff20 tex" style="font-size: 24px;">3小时打造属于自己的积分商城</p>
+                <span style="font-size: 14px;">基于场景模块化开发思路，积分商城如果是您的企业非核心业务，建议使用EasyAPI积分商城解决方案</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="m-centerbox f-bc-gray">
+        <div class="x-wp">
+            <div class="u-title">我们的产品</div>
+            <ul class="u-icons clearfix">
+                <li style="width: 19.6%">
+                    <img src="images/ic_mall_app.png">
+                    <p>APP原生集成</p>
+                </li>
+                <li style="width: 19.6%">
+                    <img src="images/ic_mall_h5.png">
+                    <p>APP H5集成</p>
+
+                </li>
+                <li style="width: 19.6%">
+                    <img src="images/ic_mall_mobileweb.png">
+                    <p>手机网页集成</p>
+                </li>
+                <li style="width: 19.6%">
+                    <img src="images/ic_mall_pcweb.png">
+                    <p>PC网页集成</p>
+                </li>
+                <li style="width: 19.6%">
+                    <img src="images/ic_mall_applet.png">
+                    <p>小程序集成</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-centerbox f-bc-gray">
+        <div class="x-wp">
+            <div class="u-title">我们的优势</div>
+            <ul class="u-icons clearfix">
+                <li>
+                    <img src="images/ic_mall_integral.png">
+                    <p>专注积分</p>
+                    <div class="tex">
+                        专注于提供积分商城API服务，
+                        做企业背后的开发者，为您提供瞬间达到顶尖积分商城的场景开发服务
+                    </div>
+                </li>
+                <li>
+                    <img src="images/ic_mall_operation.png">
+                    <p>商品运营</p>
+                    <div class="tex">
+                        已对接虚拟商品、实物商品、卡券、创意商品等用户喜欢的商品，可快速实现成熟积分商城，
+                        为您解决运营后顾之忧。
+                    </div>
+                </li>
+                <li>
+                    <img src="images/ic_mall_customization.png">
+                    <p>界面定制</p>
+                    <div class="tex">
+                        我们提供前端界面，可直接部署到自己服务器，如果想修改界面风格，也可随意修改。
+                    </div>
+                </li>
+                <li>
+                    <img src="images/ic_mall_stabilize.png">
+                    <p>系统稳定</p>
+                    <div class="tex">
+                        成功为商业用户提供每日千万次API调用服务，付费用户不限次技术支持，稳定性和处理能力有
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="jifen_block set_with">
+        <div style="font-size: 36px;text-align: center">
+            <span>使用场景</span>
+        </div>
+        <ul class="jifen_list">
+            <li>
+                <img src="images/pic_mall_o2o.png">
+                <img src="images/pic_mall_bikesharing.png">
+            </li>
+            <li>
+                <img src="images/pic_mall_games.png">
+            </li>
+            <li>
+                <img src="images/ic_mall_e-commerce.png">
+                <img src="images/ic_mall_synthesize.png">
+            </li>
+
+        </ul>
+    </div>
+
+
+
+    <div class="m-centerbox f-bc-gray">
+        <div class="u-title">他们都在用</div>
+        <ul class="u-apps x-wp">
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic1.png">
+                <p>爱达通</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic2.png">
+                <p>邻里店</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic3.png">
+                <p>网球N+1</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic4.png">
+                <p>嗨皮匠</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic5.png">
+                <p>喂鱼了</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic6.png">
+                <p>看到钱了</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic7.png">
+                <p>推客帮</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic8.png">
+                <p>宝象金融</p>
+            </li>
+        </ul>
+    </div>
+
+    <!--<div class="m-morebox" style="background-image: url(https://static.easyapi.com/images/market/bg_0.png)">-->
+        <!--<div class="u-title">联系我们</div>-->
+        <!--<div class="u-tex">-->
+            <!--· EasyAPI开发者QQ群：113415272 · 技术支持热线：0510-85180020 · 客服QQ：32498653 · 微信：fanfanle-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="u-footer f-cb">
+        <p>
+            <a href="https://www.easyapi.com/info/about">关于我们</a>
+            <a href="https://www.easyapi.com/info/together">合作伙伴</a>
+            <a href="https://www.easyapi.com/info/contact">联系我们</a>
+            <a href="https://www.easyapi.com/info/donate">支持我们</a>
+        </p>
+        <p>Copyright © 2015～2019 上海帮趣网络技术有限公司</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <script>
+        $("#change-more").on("click",function () {
+            $(this).prevAll().removeClass('active');
+            $("#Lmore").toggle();
+        })
+
+        $('[setL]').on("click",function () {
+            $(this).prevAll().removeClass('active');
+            $(this).addClass("active");
+        })
+
+        if($.cookie("authenticationToken")){
+            $.ajax({
+                method: 'GET',
+                url: 'https://account.easyapi.com/api/account',
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+                },
+                success: function (data) {
+                    $("#photo").attr("src", data.photo + "!icon.jpg");
+                    $("#avatar").removeClass('dis_hide');
+                    $("#login").addClass('dis_hide');
+                    $("#console").removeClass('dis_hide');
+                }
+            });
+        }
+    </script>
+    <script src="https://static.easyapi.com/scripts/meiqia.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>应用检查更新 - EasyAPI服务平台</title>
+    <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
+    <meta name="descriptions" content="EasyAPI应用检查更新"/>
+    <meta name="keywords" content="应用检查更新,应用自动更新,应用更新插件,自动更新API"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <style>
+        .upbx {
+            display: inline-block;
+            float: left;
+            position: relative;
+            padding-top: 5px;
+        }
+        .upbx a {
+            margin-left: 0px;
+            padding-right: 0px;
+        }
+        .upbx a:hover {
+            border: 0px;
+        }
+        .upbx .console {
+            border: 1px solid #fff;
+            border-radius: 6px;
+            height: 32px;
+            line-height: 30px;
+            margin-top: 4px;
+        }
+        .upbx i {
+            color: #fff;
+            font-size: 20px;
+            width: 50px;
+        }
+        .upbx em {
+            position: absolute;
+            top: 10px;
+            color: #fff;
+            font-size: 12px;
+            background: red;
+            border-radius: 50%;
+            left: 50px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+        }
+        .upbx img {
+            margin: 20px 5px 0 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            float: right;
+        }
+        .upbx .ov {
+            top: 50px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 3px 3px #ddd;
+            display: none;
+            width: 100%;
+            overflow: hidden;
+            line-height: 38px;
+            position: absolute;
+            background: #fff;
+            border-radius: 6px;
+        }
+        .upbx .ov a {
+            color: gray;
+            display: block;
+            font-size: 1.4rem;
+            padding: 0 20px;
+            line-height: 38px;
+            height: 38px;
+        }
+        .upbx .ov a:hover {
+            background: #18c1d6;
+            color: #Fff;
+        }
+        .navs {
+            line-height: 68px;
+            font-size: 1.6rem;
+            height: 58px;
+        }
+        .navs a {
+            color: #fff;
+            margin-left: 20px;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        .navs a:hover {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .navs .prolayer {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            left: 50%;
+            margin-left: -90px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            position: absolute;
+            width: 180px;
+            background: white;
+            border-radius: 6px;
+        }
+        .navs .prolayer a {
+            color: #4d5e6f;
+            display: block;
+            line-height: 40px;
+            margin: 0px;
+            padding: 0 15px;
+            text-align: center;
+        }
+        .navs .prolayer a:hover {
+            text-decoration: underline;
+        }
+        .navs span {
+            display: inline-block;
+            color: #fff;
+            margin-left: 20px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .navs span:hover {
+            border-bottom: 2px solid #fff;
+        }
+        .navs span:hover .prolayer {
+            display: block;
+        }
+        .f-fr{
+            float:right;
+        }
+        .console_box{
+            width:500px;
+            overflow: hidden;
+            float:right;
+
+        }
+        .dis_hide{
+            display:none;
+        }
+        .m-morebox{
+            margin-bottom: 0;
+        }
+        .u-footer a{
+            padding: 0 15px;
+        }
+
+    </style>
+</head>
+
+<body class="">
+    <div class="header_bg" style="background-image:url(https://static.easyapi.com/images/market/update/img1.png)">
+        <div class="x-wp">
+            <div class="m-header f-cb">
+                <div class="f-fl u-site">
+                    <a href="https://www.easyapi.com" class=""><img src="https://static.easyapi.com/images/market/logo.png"></a>
+                    <span>&nbsp;·&nbsp; <a href="/">应用检查更新</a></span>
+                </div>
+                <div class="console_box">
+                    <div class="navs f-fr dis_hide" id="avatar">
+                        <div class="upbx">
+                            <a class="f-fr" href="/console/" style="margin-top:-15px;">
+                                <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="f-fr u-nav dis_hide" id="console">
+                        <a href="/console/" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">控制台</a>
+                    </div>
+
+                    <div class="f-fr u-nav" style="margin-right:20px;" id="login">
+                        <a href="https://account.easyapi.com/signup">注册</a>
+                        <a href="https://account.easyapi.com/login">登陆</a>
+                    </div>
+                    <div class="f-fr u-nav" style="margin-right:10px;">
+                        <a href="">文档</a>
+                    </div>
+                </div>
+            </div>
+            <div class="u-info f-tal" style="margin-top:180px;">
+                <h2 class="f-ff48 title">应用检查更新</h2>
+                <p class="f-ff20 tex">我们提供接口和示例代码，不提供SDK，不影响应用市场规则</p>
+                <div class="u-btnbox">
+                    <a href="" class="bor-btn">示例代码</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-centerbox">
+        <div class="x-wp">
+            <div class="u-title">我们的优势</div>
+            <ul class="u-icons clearfix">
+                <li>
+                    <img src="https://static.easyapi.com/images/market/update/ic0.png">
+                    <p>标准API接口</p>
+                    <div class="tex">
+                        不依赖第三方SDK，不受应用市场规则影响
+                    </div>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/update/ic1.png">
+                    <p>支持增量更新</p>
+                    <div class="tex">
+                        检查更新API接口会自动识别用户版本，并提供diff包给用户，
+                        加速省流
+                    </div>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/update/ic2.png">
+                    <p>方便省心</p>
+                    <div class="tex">
+                        无需考虑配置服务器，部署CDN等问题，EasyAPI免费提供
+                    </div>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/update/ic3.png">
+                    <p>更新提醒</p>
+                    <div class="tex">
+                        只需在这里发布新版，所有的用户可以收到新版发布提醒。
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="m-centerbox f-bc-gray">
+        <div class="u-title">他们都在用</div>
+        <ul class="u-apps x-wp">
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic1.png">
+                <p>爱达通</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic2.png">
+                <p>邻里店</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic3.png">
+                <p>网球N+1</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic4.png">
+                <p>嗨皮匠</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic5.png">
+                <p>喂鱼了</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic6.png">
+                <p>看到钱了</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic7.png">
+                <p>推客帮</p>
+            </li>
+            <li>
+                <img src="https://static.easyapi.com/images/market/ic8.png">
+                <p>宝象金融</p>
+            </li>
+        </ul>
+    </div>
+
+
+
+    <div class="m-centerbox ">
+        <div class="x-wp">
+            <div class="u-title">有什么能帮到您</div>
+            <div class="u-question f-cb">
+               <dl>
+                   <dt><img src="https://static.easyapi.com/images/market/update/ic4.png"> 常见问题</dt>
+                   <dd>
+                       <a class="f-c-danger" href="">应用检查更新集成常见问题？</a>
+                       <a class="f-c-danger"  href=""> 应用检查更新集成指南？</a>
+                   </dd>
+               </dl>
+               <dl>
+                <dt><img src="https://static.easyapi.com/images/market/update/ic5.png"> 商务合作</dt>
+                <dd>
+                    <p>Email:leida@easyapi.com</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt><img src="https://static.easyapi.com/images/market/update/ic6.png"> 客服热线</dt>
+                <dd>
+                    <p>客服QQ:32498653</p>
+                    <p> 客服QQ:149151419</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt><img src="https://static.easyapi.com/images/market/update/ic7.png"> 问题反馈</dt>
+                <dd>
+                    <p>Email:leida@easyapi.com</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="m-morebox" style="background-image: url(https://static.easyapi.com/images/market/bg_0.png)">
+    <div class="u-title">联系我们</div>
+    <div class="u-tex">
+        · EasyAPI开发者QQ群：113415272 · 技术支持热线：0510-85180020 · 客服QQ：32498653 · 微信：fanfanle
+    </div>
+</div>
+
+
+<div class="u-footer f-cb">
+    <p>
+        <a href="https://www.easyapi.com/info/about">关于我们</a>
+        <a href="https://www.easyapi.com/info/together">合作伙伴</a>
+        <a href="https://www.easyapi.com/info/contact">联系我们</a>
+        <a href="https://www.easyapi.com/info/donate">支持我们</a>
+    </p>
+    <p>Copyright © 2015～2019 上海帮趣网络技术有限公司</p>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+    if($.cookie("authenticationToken")){
+        $.ajax({
+            method: 'GET',
+            url: 'https://account.easyapi.com/api/account',
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+            },
+            success: function (data) {
+                $("#photo").attr("src", data.photo + "!icon.jpg");
+                $("#avatar").removeClass('dis_hide');
+                $("#login").addClass('dis_hide');
+                $("#console").removeClass('dis_hide');
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

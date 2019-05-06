@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>文档转换 - EasyAPI服务平台</title>
+    <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
+    <meta name="descriptions" content="EasyAPI文档转换"/>
+    <meta name="keywords" content="文档转换"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+</head>
+<style>
+    .upbx {
+        display: inline-block;
+        float: left;
+        position: relative;
+        padding-top: 5px;
+    }
+    .upbx a {
+        margin-left: 0px;
+        padding-right: 0px;
+    }
+    .upbx a:hover {
+        border: 0px;
+    }
+    .upbx .console {
+        border: 1px solid #fff;
+        border-radius: 6px;
+        height: 32px;
+        line-height: 30px;
+        margin-top: 4px;
+    }
+    .upbx i {
+        color: #fff;
+        font-size: 20px;
+        width: 50px;
+    }
+    .upbx em {
+        position: absolute;
+        top: 10px;
+        color: #fff;
+        font-size: 12px;
+        background: red;
+        border-radius: 50%;
+        left: 50px;
+        width: 25px;
+        height: 25px;
+        text-align: center;
+        line-height: 25px;
+    }
+    .upbx img {
+        margin: 20px 5px 0 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        float: right;
+    }
+    .upbx .ov {
+        top: 50px;
+        border: 1px solid #ddd;
+        box-shadow: 0px 3px 3px #ddd;
+        display: none;
+        width: 100%;
+        overflow: hidden;
+        line-height: 38px;
+        position: absolute;
+        background: #fff;
+        border-radius: 6px;
+    }
+    .upbx .ov a {
+        color: gray;
+        display: block;
+        font-size: 1.4rem;
+        padding: 0 20px;
+        line-height: 38px;
+        height: 38px;
+    }
+    .upbx .ov a:hover {
+        background: #18c1d6;
+        color: #Fff;
+    }
+    .navs {
+        line-height: 68px;
+        font-size: 1.6rem;
+        height: 58px;
+    }
+    .navs a {
+        color: #fff;
+        margin-left: 20px;
+        display: inline-block;
+        padding: 0 10px;
+    }
+    .navs a:hover {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .navs .prolayer {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        left: 50%;
+        margin-left: -90px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        position: absolute;
+        width: 180px;
+        background: white;
+        border-radius: 6px;
+    }
+    .navs .prolayer a {
+        color: #4d5e6f;
+        display: block;
+        line-height: 40px;
+        margin: 0px;
+        padding: 0 15px;
+        text-align: center;
+    }
+    .navs .prolayer a:hover {
+        text-decoration: underline;
+    }
+    .navs span {
+        display: inline-block;
+        color: #fff;
+        margin-left: 20px;
+        padding: 0 10px;
+        cursor: pointer;
+    }
+    .navs span:hover {
+        border-bottom: 2px solid #fff;
+    }
+    .navs span:hover .prolayer {
+        display: block;
+    }
+    .f-fr{
+        float:right;
+    }
+    .console_box{
+        width:500px;
+        overflow: hidden;
+        float:right;
+
+    }
+    .dis_hide{
+        display:none;
+    }
+    .m-morebox{
+        margin-bottom: 0;
+    }
+    .u-footer a{
+        padding: 0 15px;
+    }
+
+</style>
+
+<body class="">
+    <div class="header_bg" style="background-image:url(https://static.easyapi.com/images/market/convert/img1.png)">
+        <div class="x-wp">
+            <div class="m-header f-cb">
+                <div class="f-fl u-site">
+                    <a href="https://www.easyapi.com" class=""><img src="https://static.easyapi.com/images/market/logo.png"></a>
+                    <span>&nbsp;·&nbsp; <a href="/">文档转换</a></span>
+                </div>
+                <div class="console_box">
+                    <div class="navs f-fr dis_hide" id="avatar">
+                        <div class="upbx">
+                            <a class="f-fr" href="/console/" style="margin-top:-15px;">
+                                <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="f-fr u-nav dis_hide" id="console">
+                        <a href="https://service.easyapi.com" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">服务中心</a>
+                    </div>
+
+                    <div class="f-fr u-nav" style="margin-right:20px;" id="login">
+                        <a href="https://account.easyapi.com/signup">注册</a>
+                        <a href="https://account.easyapi.com/login">登陆</a>
+                    </div>
+                    <div class="f-fr u-nav" style="margin-right:10px;">
+                        <a href="">文档</a>
+                    </div>
+                </div>
+            </div>
+            <div class="u-info f-tal" style="margin-top:180px;">
+                <h2 class="f-ff48 title">最全面的文档转换API接口</h2>
+                <p class="f-ff20 tex">不断完善的文档转换服务</p>
+                <div class="u-btnbox">
+                    <a href="">在线演示</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-centerbox">
+        <div class="x-wp">
+            <ul class="u-icons clearfix">
+                <li>
+                    <img src="https://static.easyapi.com/images/market/convert/ic1.png">
+                    <p>支持格式多</p>
+                    <div class="tex">
+                        1小时实现快速提现功能
+                    </div>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/convert/ic2.png">
+                    <p>转换速度快</p>
+                    <div class="tex">
+                        提现速度只在几秒之间
+                    </div>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/convert/ic3.png">
+                    <p>多种转换通道</p>
+                    <div class="tex">
+                        支持pdf、word、ppt、excel等
+                    </div>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/convert/ic4.png">
+                    <p>性能稳定</p>
+                    <div class="tex">
+                        最快最稳定的转换内核
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="m-centerbox ">
+        <div class="x-wp">
+            <div class="u-title">支持文档</div>
+            <ul class="zhuanhuanzhichi f-cb">
+                <li>
+                    <div class="icon">
+                        <span style="background:#428acc">
+                            <i class="iconfont icon-word"></i>
+                        </span>
+                        <em><i class="iconfont  icon-zhuanhuan"></i></em>
+                        <span style="background:#d8292f"><i class="iconfont icon-pdf"></i></span>
+                    </div>
+                    <p>支持WORD转换PDF</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background:#177d25">
+                            <i class="iconfont icon-xls"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background:#d8292f"><i class="iconfont icon-pdf"></i></span>
+                    </div>
+                    <p>支持EXCEL转换PDF</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background: #d8292f">
+                            <i class="iconfont icon-txt"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background:#d8292f"><i class="iconfont icon-pdf"></i></span>
+                    </div>
+                    <p>支持TXT转换PDF</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background: #de4e21">
+                            <i class="iconfont icon-ppt"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background:#d8292f "><i class="iconfont icon-pdf"></i></span>
+                    </div>
+                    <p>支持PPT转换PDF</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background:#9f82fa">
+                            <i class="iconfont icon-jpg"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span><i class="iconfont icon-pdf"></i></span>
+                    </div>
+                    <p>支持JPG转换PDF</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background: #30a85a">
+                            <i class="iconfont icon-html"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background:#d8292f"><i class="iconfont icon-pdf"></i></span>
+                    </div>
+                    <p>支持HTML转换PDF</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background: #d8292f">
+                            <i class="iconfont icon-pdf"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background:#9f82fa"><i class="iconfont icon-jpg"></i></span>
+                    </div>
+                    <p>支持PDF转换JPG</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span>
+                            <i class="iconfont icon-pdf"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background: #9f82fa"><i class="iconfont icon-word"></i></span>
+                    </div>
+                    <p>支持PDF转换WORD</p>
+                </li>
+                <li>
+                    <div class="icon">
+                        <span style="background: #428acc">
+                            <i class="iconfont icon-word"></i>
+                        </span>
+                        <em><i class="iconfont icon-zhuanhuan"></i></em>
+                        <span style="background: #9f82fa"><i class="iconfont icon-jpg"></i></span>
+                    </div>
+                    <p>支持WORD转换JPG</p>
+                </li>
+            </ul>
+        </div>
+        <div class="more-tex">我们还支持更多...</div>
+        </div>
+
+
+        <div class="m-morebox" style="background-image: url(https://static.easyapi.com/images/market/bg_0.png)">
+            <div class="u-title">联系我们</div>
+            <div class="u-tex">
+                · EasyAPI开发者QQ群：113415272 · 技术支持热线：0510-85180020 · 客服QQ：32498653 · 微信：fanfanle
+            </div>
+        </div>
+
+
+
+        <div class="u-footer f-cb">
+            <p>
+                <a href="https://www.easyapi.com/info/about">关于我们</a>
+                <a href="https://www.easyapi.com/info/together">合作伙伴</a>
+                <a href="https://www.easyapi.com/info/contact">联系我们</a>
+                <a href="https://www.easyapi.com/info/donate">支持我们</a>
+            </p>
+            <p>Copyright © 2015～2019 上海帮趣网络技术有限公司</p>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <script type="text/javascript">
+        if($.cookie("authenticationToken")){
+            $.ajax({
+                method: 'GET',
+                url: 'https://account.easyapi.com/api/account',
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+                },
+                success: function (data) {
+                    $("#photo").attr("src", data.photo + "!icon.jpg");
+                    $("#avatar").removeClass('dis_hide');
+                    $("#login").addClass('dis_hide');
+                    $("#console").removeClass('dis_hide');
+                }
+            });
+        }
+        </script>
+
+    </body>
+
+    </html>

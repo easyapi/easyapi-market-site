@@ -1,0 +1,549 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>天气预报 - EasyAPI服务平台</title>
+    <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
+    <meta name="descriptions" content="EasyAPI旗下天气预报API接口服务，整合多家天气预报接口。"/>
+    <meta name="keywords" content="天气预报API,实况天气,生活指数"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <style>
+        .upbx {
+            display: inline-block;
+            float: left;
+            position: relative;
+            padding-top: 5px;
+        }
+        .upbx a {
+            margin-left: 0px;
+            padding-right: 0px;
+        }
+        .upbx a:hover {
+            border: 0px;
+        }
+        .upbx .console {
+            border: 1px solid #fff;
+            border-radius: 6px;
+            height: 32px;
+            line-height: 30px;
+            margin-top: 4px;
+        }
+        .upbx i {
+            color: #fff;
+            font-size: 20px;
+            width: 50px;
+        }
+        .upbx em {
+            position: absolute;
+            top: 10px;
+            color: #fff;
+            font-size: 12px;
+            background: red;
+            border-radius: 50%;
+            left: 50px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+        }
+        .upbx img {
+            margin: 20px 5px 0 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            float: right;
+        }
+        .upbx .ov {
+            top: 50px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 3px 3px #ddd;
+            display: none;
+            width: 100%;
+            overflow: hidden;
+            line-height: 38px;
+            position: absolute;
+            background: #fff;
+            border-radius: 6px;
+        }
+        .upbx .ov a {
+            color: gray;
+            display: block;
+            font-size: 1.4rem;
+            padding: 0 20px;
+            line-height: 38px;
+            height: 38px;
+        }
+        .upbx .ov a:hover {
+            background: #18c1d6;
+            color: #Fff;
+        }
+        .navs {
+            line-height: 68px;
+            font-size: 1.6rem;
+            height: 58px;
+        }
+        .navs a {
+            color: #fff;
+            margin-left: 20px;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        .navs a:hover {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .navs .prolayer {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            left: 50%;
+            margin-left: -90px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            position: absolute;
+            width: 180px;
+            background: white;
+            border-radius: 6px;
+        }
+        .navs .prolayer a {
+            color: #4d5e6f;
+            display: block;
+            line-height: 40px;
+            margin: 0px;
+            padding: 0 15px;
+            text-align: center;
+        }
+        .navs .prolayer a:hover {
+            text-decoration: underline;
+        }
+        .navs span {
+            display: inline-block;
+            color: #fff;
+            margin-left: 20px;
+            padding: 0 10px;
+            cursor: pointer;
+        }
+        .navs span:hover {
+            border-bottom: 2px solid #fff;
+        }
+        .navs span:hover .prolayer {
+            display: block;
+        }
+        .f-fr{
+            float:right;
+        }
+        .console_box{
+            width:500px;
+            overflow: hidden;
+            float:right;
+
+        }
+        .dis_hide{
+            display:none;
+        }
+        .m-morebox{
+            margin-bottom: 0;
+        }
+        .u-footer a{
+            padding: 0 15px;
+        }
+
+        .f-fr{
+            float:right;
+        }
+        .f-fl{
+            float:left;
+        }
+
+        .dis_hide{
+            display:none;
+        }
+
+        .grey_bd{
+            background-color: #f8f8f9;
+        }
+        .fp_bd{
+            background-image: url("images/bg_invoice_banner2.png");
+            width: 100%;
+            height:680px;
+            background-size: cover;
+        }
+        .fp_width{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .fp_head{
+            width: 100%;
+            height: 68px;
+        }
+        .fp_head a:hover{
+            /*color: rgba(255,255,255,0.5);*/
+            font-weight: bold;
+        }
+        .active{
+            font-weight: bold;
+        }
+        .fp_logo{
+            width: 220px;
+            float: left;
+            height:68px;
+        }
+        .fp_logo li{
+            float: left;
+            line-height: 68px;
+        }
+        .fp_logo li a img{
+            margin-top: 24px;
+
+        }
+        .fp_logo li span{
+            display: inline-block;
+            margin: 0 10px;
+            color: #fff;
+        }
+        .fp_logo li a{
+            color: #fff;
+            font-size: 18px;
+        }
+        .fa_list{
+            height:68px;
+            float: left;
+            margin-left: 140px;
+        }
+        .fa_list li{
+            float: left;
+            line-height: 68px;
+            margin-right: 30px;
+        }
+        .fa_list li a{
+            color: #fff;
+            font-size: 14px;
+            margin-right: 30px;
+        }
+        .fa_fr{
+            float: right;
+            height:68px;
+
+        }
+        .fa_fr li{
+            float: left;
+            line-height: 68px;
+            margin-right: 30px;
+        }
+        .fa_fr li:last-child{
+            margin-right: 0;
+        }
+        .fa_fr li a{
+            color: #fff;
+            font-size: 14px;
+        }
+        .fa_console a{
+            border:1px solid #fff;
+            padding:6px  16px;
+            border-radius: 4px;
+        }
+        .fa_avatar{
+            position: relative;
+        }
+        .fa_avatar img{
+            width: 40px;
+            height:40px;
+            border-radius: 50%;
+            margin-top: 14px;
+            cursor: pointer;
+        }
+        .fa_avatar:hover .avatar_down{
+            display: block;
+        }
+        .avatar_down{
+            display: none;
+            width: 100px;
+            background-color: #fff;
+            border-radius: 4px;
+            position: absolute;
+            border:1px solid #ddd;
+            top:70px;
+            right:50%;
+            margin-right: -50px;
+        }
+        .avatar_down .avatar_item{
+            text-align: center;
+            line-height: 40px;
+            border-bottom:1px solid #ddd;
+        }
+        .avatar_down .avatar_item:last-child{
+            border-bottom: 0;
+        }
+        .avatar_down .avatar_item a{
+            color: #666;
+            font-size: 14px;
+        }
+        .avatar_down .avatar_item a:hover{
+            color: #18c1d6;
+        }
+
+    </style>
+</head>
+
+<body class="">
+    <div class="header_bg" style="background-image:url(https://static.easyapi.com/images/market/weather/img1.png)">
+        <div class="x-wp">
+<<<<<<< HEAD
+            <div class="fp_head">
+                <ul class="fp_logo">
+                    <li>
+                        <a href="https://fapiao.easyapi.com/">
+                            <img src="https://static.easyapi.com/images/market/logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <span>&nbsp;·&nbsp;</span>
+                        <a href="index.html">
+                            天气预报
+                        </a>
+                    </li>
+                </ul>
+                <ul class="fa_list">
+                    <li>
+                        <a class="active"  href="index.html">首页</a>
+                    </li>
+                    <li>
+                        <a  href="code.html">天气现象编码表</a>
+                    </li>
+                    <li>
+                        <a  href="aqi.html">空气质量指数</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.easyapi.com/api/?documentId=17044">文档</a>
+                    </li>
+                </ul>
+                <ul class="fa_fr">
+                    <li id="register">
+=======
+            <div class="m-header f-cb">
+                <div class="f-fl u-site">
+                    <a href="https://www.easyapi.com" class=""><img src="https://static.easyapi.com/images/market/logo.png"></a>
+                    <span>&nbsp;·&nbsp; <a href="/">天气预报</a></span>
+                </div>
+                <div class="console_box">
+                    <div class="navs f-fr dis_hide" id="avatar">
+                        <div class="upbx">
+                            <a class="f-fr" href="/console/" style="margin-top:-15px;">
+                                <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="f-fr u-nav dis_hide" id="console">
+                        <a href="https://service.easyapi.com" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">服务中心</a>
+                    </div>
+
+                    <div class="f-fr u-nav" style="margin-right:20px;" id="login">
+>>>>>>> ae15e43a60aaeef0512fc507c81998821f046e55
+                        <a href="https://account.easyapi.com/signup">注册</a>
+                    </li>
+                    <li id="login">
+                        <a href="https://account.easyapi.com/login">登录</a>
+                    </li>
+                    <li class="fa_console dis_hide" id="console">
+                        <a href="/console/">控制台</a>
+                    </li>
+                    <li class="fa_avatar dis_hide" id="avatar">
+                        <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
+                        <div class="avatar_down">
+                            <div class="avatar_item">
+                                <a href="https://account.easyapi.com/notification/">我的通知</a>
+                            </div>
+                            <div class="avatar_item">
+                                <a href="https://account.easyapi.com/setting/data">个人设置</a>
+                            </div>
+                            <div class="avatar_item" >
+                                <a href="https://account.easyapi.com/logout">退出</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="m-header f-cb">-->
+                <!--<div class="f-fl u-site">-->
+                    <!--<a href="" class=""><img src="https://static.easyapi.com/images/market/logo.png"> </a>-->
+                    <!--<span>&nbsp;·&nbsp; 中文分词</span>-->
+                <!--</div>-->
+                <!--<div class="console_box">-->
+                    <!--<div class="navs f-fr dis_hide" id="avatar">-->
+                        <!--<div class="upbx">-->
+                            <!--<a class="f-fr" href="/console/" style="margin-top:-15px;">-->
+                                <!--<img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="f-fr u-nav dis_hide" id="console">-->
+                        <!--<a href="/console/" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">控制台</a>-->
+                    <!--</div>-->
+
+                    <!--<div class="f-fr u-nav" style="margin-right:20px;" id="login">-->
+                        <!--<a href="https://account.easyapi.com/signup">注册</a>-->
+                        <!--<a href="https://account.easyapi.com/login">登陆</a>-->
+                    <!--</div>-->
+                    <!--<div class="f-fr u-nav" style="margin-right:10px;">-->
+                        <!--<a href="">文档</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="u-info f-tac" style="margin-top:180px;">
+                <h2 class="f-ff48 title">整合多家天气预报接口</h2>
+                <div class="u-searbox">
+                    <input type="text" placeholder="请输入城市名称或者IP地址">
+                    <a href="" class="btn">
+                        <img src="https://static.easyapi.com/images/market/ip/icon.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-centerbox ">
+        <div class="x-wp">
+            <div class="u-title">我们的优势</div>
+            <ul class="u-icons clearfix">
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic1.png">
+                    <p>数据精准</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic2.png">
+                    <p>性能稳定</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic3.png">
+                    <p>低价策略</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic4.png">
+                    <p>全球数据</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic5.png">
+                    <p>简单易用</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic6.png">
+                    <p>智慧整合</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic7.png">
+                    <p>售后保障</p>
+                </li>
+                <li>
+                    <img src="https://static.easyapi.com/images/market/weather/ic8.png">
+                    <p>7x24小时服务</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="m-centerbox page-weather f-bc-gray">
+        <div class="u-title">我们的服务</div>
+        <div class="u-servers f-cb x-wp">
+          <div class="item">
+              <img src="https://static.easyapi.com/images/market/weather/ic9.png">
+              <h3>全球城市</h3>
+              <p>国内2568县级站<br>
+                  国际198个国家1518站</p>
+              </div>
+              <div class="item">
+                <img src="https://static.easyapi.com/images/market/weather/ic151.png">
+                <h3>实况天气</h3>
+                <p>高频国内/际实况<br>
+                    最短5-10分钟更新</p>
+                </div>
+                <div class="item">
+                    <img src="https://static.easyapi.com/images/market/weather/ic10.png">
+                    <h3>生活指数</h3>
+                    <p>洗车、感冒、穿衣、污染、舒适度<br>
+                        空调、运动、旅游、交通、紫外线</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://static.easyapi.com/images/market/weather/ic11.png">
+                        <h3>空气质量</h3>
+                        <p>国内434站AQI、PM2.5及SO2、NO2等污染级别、健康影响、建议措施</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://static.easyapi.com/images/market/weather/ic12.png">
+                        <h3>天气预警</h3>
+                        <p>提供及时更新的中国城市气象灾害预警数据。<br>
+                            防患胜于救灾，气象灾害早知道。</p>
+                        </div>
+                        <div class="item">
+                            <img src="https://static.easyapi.com/images/market/weather/ic13.png">
+                            <h3>日常日落</h3>
+                            <p>全球各地每天日出日落时间，便于摄影、自然爱好者拍摄或观赏壮美的日出日落景象。</p>
+                        </div>
+                        <div class="item">
+                            <img src="https://static.easyapi.com/images/market/weather/ic14.png">
+                            <h3>农历节气</h3>
+                            <p>查询任何一个公历日期对应的农历日期、农历传统节日、节气、天干地支纪年月日及生肖属相。</p>
+                        </div>
+                        <div class="item">
+                            <img src="https://static.easyapi.com/images/market/weather/ic15.png">
+                            <h3>其他服务</h3>
+                            <p>根据大客户会员的需求免费定制开发API接口，让你的开发更加方便灵活。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-centerbox page-weather ">
+                    <div class="u-title">数据质量保障</div>
+                    <div class="u-baozhang f-cb x-wp">
+                        <div class="item">
+                            <img src="https://static.easyapi.com/images/market/weather/ic16.png">
+                            <h3>权威数据</h3>
+                            <p>天气数据来自权威气象机构授权的官方数据，为您提供正规、合法的天气服务。</p>
+                        </div>
+                        <div class="item">
+                            <img src="https://static.easyapi.com/images/market/weather/ic17.png">
+                            <h3>智慧多数据源</h3>
+                            <p>智能融合国内外多家气象机构的权威数据，数据源互相补充备份，减少缺失概率。</p>
+                        </div>
+                        <div class="item">
+                            <img src="https://static.easyapi.com/images/market/weather/ic18.png">
+                            <h3>高可用性</h3>
+                            <p>EasyAPI天气拥有9年专业天气数据服务经验，API服务可用性高达99.9%以上。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="u-footer f-cb">
+                    <p>
+                        <a href="https://www.easyapi.com/info/about">关于我们</a>
+                        <a href="https://www.easyapi.com/info/together">合作伙伴</a>
+                        <a href="https://www.easyapi.com/info/contact">联系我们</a>
+                        <a href="https://www.easyapi.com/info/donate">支持我们</a>
+                    </p>
+                    <p>Copyright © 2015～2019 上海帮趣网络技术有限公司</p>
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+                <script>
+                    if($.cookie("authenticationToken")){
+                        $.ajax({
+                            method: 'GET',
+                            url: 'https://account.easyapi.com/api/account',
+                            beforeSend: function (request) {
+                                request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+                            },
+                            success: function (data) {
+                                $("#photo").attr("src", data.photo + "!icon.jpg");
+                                $("#avatar").removeClass('dis_hide');
+                                $("#login").addClass('dis_hide');
+                                $("#console").removeClass('dis_hide');
+                            }
+                        });
+                    }
+                </script>
+
+            </body>
+
+            </html>
