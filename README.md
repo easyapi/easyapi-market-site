@@ -44,5 +44,5 @@ EasyAPI服务站点，是一个纯静态项目工程。
 	
 **1. 样式图片等无法访问，访问本地静态资源**
 
-    请单独运行easyapi-static项目(https://code.aliyun.com/easyapi/easyapi-static)，端口使用80，访问地址http://localhost。
+    请单独运行easyapi-static项目(https://github.com/easyapi/easyapi-static)，端口使用80，访问地址http://localhost。
     使用SwitchHosts，设置127.0.0.1 static.easyapi.com。
