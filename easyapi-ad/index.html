@@ -1,416 +1,210 @@
 ﻿<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<html lang="zh">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>广告管家 - EasyAPI场景化服务</title>
-    <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
-    <meta name="descriptions" content="EasyAPI帮助中心"/>
-    <meta name="keywords" content="帮助中心,视频教程"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <style>
-        .upbx {
-            display: inline-block;
-            float: left;
-            position: relative;
-            padding-top: 5px;
-        }
-        .upbx a {
-            margin-left: 0px;
-            padding-right: 0px;
-        }
-        .upbx a:hover {
-            border: 0px;
-        }
-        .upbx .console {
-            border: 1px solid #fff;
-            border-radius: 6px;
-            height: 32px;
-            line-height: 30px;
-            margin-top: 4px;
-        }
-        .upbx i {
-            color: #fff;
-            font-size: 20px;
-            width: 50px;
-        }
-        .upbx em {
-            position: absolute;
-            top: 10px;
-            color: #fff;
-            font-size: 12px;
-            background: red;
-            border-radius: 50%;
-            left: 50px;
-            width: 25px;
-            height: 25px;
-            text-align: center;
-            line-height: 25px;
-        }
-        .upbx img {
-            margin: 20px 5px 0 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            float: right;
-        }
-        .upbx .ov {
-            top: 50px;
-            border: 1px solid #ddd;
-            box-shadow: 0px 3px 3px #ddd;
-            display: none;
-            width: 100%;
-            overflow: hidden;
-            line-height: 38px;
-            position: absolute;
-            background: #fff;
-            border-radius: 6px;
-        }
-        .upbx .ov a {
-            color: gray;
-            display: block;
-            font-size: 1.4rem;
-            padding: 0 20px;
-            line-height: 38px;
-            height: 38px;
-        }
-        .upbx .ov a:hover {
-            background: #18c1d6;
-            color: #Fff;
-        }
-        .navs {
-            line-height: 68px;
-            font-size: 1.6rem;
-            height: 58px;
-        }
-        .navs a {
-            color: #fff;
-            margin-left: 20px;
-            display: inline-block;
-            padding: 0 10px;
-        }
-        .navs a:hover {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .navs .prolayer {
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            left: 50%;
-            margin-left: -90px;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            position: absolute;
-            width: 180px;
-            background: white;
-            border-radius: 6px;
-        }
-        .navs .prolayer a {
-            color: #4d5e6f;
-            display: block;
-            line-height: 40px;
-            margin: 0px;
-            padding: 0 15px;
-            text-align: center;
-        }
-        .navs .prolayer a:hover {
-            text-decoration: underline;
-        }
-        .navs span {
-            display: inline-block;
-            color: #fff;
-            margin-left: 20px;
-            padding: 0 10px;
-            cursor: pointer;
-        }
-        .navs span:hover {
-            border-bottom: 2px solid #fff;
-        }
-        .navs span:hover .prolayer {
-            display: block;
-        }
-        .f-fr{
-            float:right;
-        }
-        .f-fl{
-            float:left;
-        }
-        .console_box{
-            width:500px;
-            overflow: hidden;
-            float:right;
-
-        }
-        .dis_hide{
-            display:none;
-        }
-        .news_block{
-            overflow: hidden;
-        }
-        .news_list{
-            padding: 80px 0;
-            overflow: hidden;
-        }
-        .grey_bd{
-            background-color: #f8f8f9;
-        }
-        .set_with{
-            width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        .set_with li:first-child{
-            width: 60%;
-        }
-        .set_with li:last-child{
-            width: 40%;
-        }
-
-        .set_with li p{
-            font-size: 14px;
-            line-height: 30px;
-        }
-        .set_with li p span{
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #18c1d6;
-            margin-right: 5px;
-
-        }
-        .set_with li p:first-child{
-            font-size: 36px;
-            padding-bottom: 15px;
-            line-height: 40px;
-        }
-        .notificatin{
-            padding: 76px 0;
-            height: 181px;
-        }
-        .notificatin p{
-            padding-bottom: 30px;
-        }
-        .notificatin span{
-            font-size: 18px;
-            color: #828282;
-            line-height: 30px;
-        }
-        .m-morebox{
-            margin-bottom: 0;
-        }
-        .u-footer a{
-            padding: 0 15px;
-        }
-        .m-centerbox .u-icons li{
-            float: left;
-            margin-right: 1%;
-            height: 260px;
-        }
-        .m-centerbox .u-icons{
-            overflow: hidden;
-        }
-        .m-centerbox .u-icons li img{
-            width: 120px;
-            height: 120px;
-        }
-
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>广告管家 - EasyAPI场景化服务</title>
+  <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
+  <meta name="descriptions" content="EasyAPI帮助中心"/>
+  <meta name="keywords" content="帮助中心,视频教程"/>
+  <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="">
 <div class="header_bg" style="background-image:url(images/bg_ad_banner.png)">
-    <div class="x-wp">
-        <div class="m-header f-cb">
-            <div class="f-fl u-site">
-                <a href="https://www.easyapi.com" class=""><img src="https://static.easyapi.com/images/market/logo.png"></a>
-                <span>&nbsp;·&nbsp; <a href="/"><a href="/">广告管家</a></span>
-            </div>
-            <div class="console_box">
-                <div class="navs f-fr dis_hide" id="avatar">
-                    <div class="upbx">
-                        <a class="f-fr" href="/console/" style="margin-top:-15px;">
-                            <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
-                        </a>
-                    </div>
-                </div>
-                <div class="f-fr u-nav dis_hide" id="console">
-                    <a href="/console/" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">控制台</a>
-                </div>
+  <div class="x-wp">
+    <div class="m-header f-cb">
+      <div class="f-fl u-site">
+        <a href="https://www.easyapi.com" class=""><img src="https://static.easyapi.com/images/market/logo.png"></a>
+        <span>&nbsp;·&nbsp; <a href="/">广告管家</a></span>
+      </div>
+      <div class="console_box">
+        <div class="navs f-fr dis_hide" id="avatar">
+          <div class="upbx">
+            <a class="f-fr" href="/console/" style="margin-top:-15px;">
+              <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
+            </a>
+          </div>
+        </div>
+        <div class="f-fr u-nav dis_hide" id="console">
+          <a href="/console/" style="border:1px solid #ddd;padding:6px 20px;border-radius: 4px;">控制台</a>
+        </div>
 
-                <div class="f-fr u-nav" style="margin-right:20px;" id="login">
-                    <a href="https://account.easyapi.com/signup">注册</a>
-                    <a href="https://account.easyapi.com/login">登录</a>
-                </div>
-                <div class="f-fr u-nav" style="margin-right:10px;">
-                    <a href="">文档</a>
-                </div>
-            </div>
+        <div class="f-fr u-nav" style="margin-right:20px;" id="login">
+          <a href="https://account.easyapi.com/signup">注册</a>
+          <a href="https://account.easyapi.com/login">登录</a>
         </div>
-        <div class="u-info f-tal" style="margin-top:180px;text-align: center">
-            <p class="f-ff48 title" style="font-size: 48px;">独立第三方一站式广告管理系统</p>
-            <p class="f-ff20 tex" style="font-size: 20px;">广告内容管理，广告流量售卖解决方案</p>
+        <div class="f-fr u-nav" style="margin-right:10px;">
+          <a href="">文档</a>
         </div>
+      </div>
     </div>
+    <div class="u-info f-tal" style="margin-top:180px;text-align: center">
+      <p class="f-ff48 title" style="font-size: 48px;">独立第三方一站式广告管理系统</p>
+      <p class="f-ff20 tex" style="font-size: 20px;">广告内容管理，广告流量售卖解决方案</p>
+    </div>
+  </div>
 </div>
 
 
-
-    <div class="m-centerbox f-bc-gray">
-        <div class="x-wp">
-            <div class="u-title">我们的功能</div>
-            <ul class="u-icons clearfix">
-                <li>
-                    <img src="images/ic_ad_function.png">
-                    <p>功能完善</p>
-                    <div class="tex">
-                        跨屏支持，全流量管理；丰富的推广形式；支持SDK、API等灵活的接入方式；满足自售、交易市场等多场景使用需求
-                    </div>
-                </li>
-                <li>
-                    <img src="images/ic_ad_efficient.png">
-                    <p>高效稳定</p>
-                    <div class="tex">
-                        速度快，损耗低。分布式计算与高并发处理，提供快、准、稳的系统体验
-                    </div>
-                </li>
-                <li>
-                    <img src="images/ic_ad_apiopen.png">
-                    <p>API开放</p>
-                    <div class="tex">
-                        广告相关API全面开放，您可根据自己的业务需求进行更深入的集成合作
-                    </div>
-                </li>
-                <li>
-                    <img src="images/ic_ad_specialty.png">
-                    <p>专业贴心</p>
-                    <div class="tex">
-                        免费开放，7*24小时快速响应，提供专业咨询，发掘更多价值
-                    </div>
-                </li>
-            </ul>
+<div class="m-centerbox f-bc-gray">
+  <div class="x-wp">
+    <div class="u-title">我们的功能</div>
+    <ul class="u-icons clearfix">
+      <li>
+        <img src="images/ic_ad_function.png">
+        <p>功能完善</p>
+        <div class="tex">
+          跨屏支持，全流量管理；丰富的推广形式；支持SDK、API等灵活的接入方式；满足自售、交易市场等多场景使用需求
         </div>
-    </div>
+      </li>
+      <li>
+        <img src="images/ic_ad_efficient.png">
+        <p>高效稳定</p>
+        <div class="tex">
+          速度快，损耗低。分布式计算与高并发处理，提供快、准、稳的系统体验
+        </div>
+      </li>
+      <li>
+        <img src="images/ic_ad_apiopen.png">
+        <p>API开放</p>
+        <div class="tex">
+          广告相关API全面开放，您可根据自己的业务需求进行更深入的集成合作
+        </div>
+      </li>
+      <li>
+        <img src="images/ic_ad_specialty.png">
+        <p>专业贴心</p>
+        <div class="tex">
+          免费开放，7*24小时快速响应，提供专业咨询，发掘更多价值
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
 
 
 <div class="news_block">
-    <div class="news_list grey_bd">
-        <ul class="set_with">
-            <li class="f-fl" style="margin-top: 60px;">
-                <p style="margin-bottom: 15px;">直投管理</p>
-                <p>高效的库存管理机制，可视化的排期计划</p>
-                <p>多维度的精准定向、智能化的投放控制</p>
-            </li>
-            <li class="f-fr">
-                <img src="images/pic_ad_manage.png"/>
-            </li>
-        </ul>
-    </div>
-    <div class="news_list">
-        <ul class="set_with">
-            <li class="f-fl">
-                <img src="images/pic_ad_putin.png"/>
-            </li>
-            <li class="f-fr" style="margin-top: 60px;">
-                <p style="margin-bottom: 15px;">聚合投放</p>
-                <p>轻松接入多个第三方广告，聚合管理，智能优化</p>
-                <p>任意配比各平台广告权重及比例，多平台流量分配</p>
-            </li>
-        </ul>
-    </div>
+  <div class="news_list grey_bd">
+    <ul class="set_with">
+      <li class="f-fl" style="margin-top: 60px;">
+        <p style="margin-bottom: 15px;">直投管理</p>
+        <p>高效的库存管理机制，可视化的排期计划</p>
+        <p>多维度的精准定向、智能化的投放控制</p>
+      </li>
+      <li class="f-fr">
+        <img src="images/pic_ad_manage.png"/>
+      </li>
+    </ul>
+  </div>
+  <div class="news_list">
+    <ul class="set_with">
+      <li class="f-fl">
+        <img src="images/pic_ad_putin.png"/>
+      </li>
+      <li class="f-fr" style="margin-top: 60px;">
+        <p style="margin-bottom: 15px;">聚合投放</p>
+        <p>轻松接入多个第三方广告，聚合管理，智能优化</p>
+        <p>任意配比各平台广告权重及比例，多平台流量分配</p>
+      </li>
+    </ul>
+  </div>
 
 
 </div>
 
-    <div class="m-centerbox f-bc-gray">
-        <div class="u-title">他们都在用</div>
-        <ul class="u-apps x-wp">
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic1.png">
-                <p>爱达通</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic2.png">
-                <p>邻里店</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic3.png">
-                <p>网球N+1</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic4.png">
-                <p>嗨皮匠</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic5.png">
-                <p>喂鱼了</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic6.png">
-                <p>看到钱了</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic7.png">
-                <p>推客帮</p>
-            </li>
-            <li>
-                <img src="https://static.easyapi.com/images/market/ic8.png">
-                <p>宝象金融</p>
-            </li>
-        </ul>
-    </div>
+<div class="m-centerbox f-bc-gray">
+  <div class="u-title">他们都在用</div>
+  <ul class="u-apps x-wp">
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic1.png">
+      <p>爱达通</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic2.png">
+      <p>邻里店</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic3.png">
+      <p>网球N+1</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic4.png">
+      <p>嗨皮匠</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic5.png">
+      <p>喂鱼了</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic6.png">
+      <p>看到钱了</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic7.png">
+      <p>推客帮</p>
+    </li>
+    <li>
+      <img src="https://static.easyapi.com/images/market/ic8.png">
+      <p>宝象金融</p>
+    </li>
+  </ul>
+</div>
 
-    <div class="m-morebox" style="background-image: url(https://static.easyapi.com/images/market/bg_0.png)">
-        <div class="u-title">联系我们</div>
-        <div class="u-tex">
-            · EasyAPI开发者QQ群：113415272 · 技术支持热线：0510-85180020 · 客服QQ：32498653 · 微信：fanfanle
-        </div>
-    </div>
+<div class="m-morebox" style="background-image: url(https://static.easyapi.com/images/market/bg_0.png)">
+  <div class="u-title">联系我们</div>
+  <div class="u-tex">
+    · EasyAPI开发者QQ群：113415272 · 技术支持热线：0510-85180020 · 客服QQ：32498653 · 微信：fanfanle
+  </div>
+</div>
 
 
-    <div class="footer clearfix">
-        <p>
-            <a href="https://www.easyapi.com/info/about">关于我们</a>
-            <a href="https://www.easyapi.com/info/together">合作伙伴</a>
-            <a href="https://www.easyapi.com/info/contact">联系我们</a>
-            <a href="https://www.easyapi.com/info/donate">支持我们</a>
-        </p>
-        <p>Copyright © 2014～2019 上海帮趣网络技术有限公司</p>
-        <p><a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备19007521号</a></p>
-    </div>
+<div class="footer clearfix">
+  <p>
+    <a href="https://www.easyapi.com/info/about">关于我们</a>
+    <a href="https://www.easyapi.com/info/together">合作伙伴</a>
+    <a href="https://www.easyapi.com/info/contact">联系我们</a>
+    <a href="https://www.easyapi.com/info/donate">支持我们</a>
+  </p>
+  <p>Copyright © 2014～2019 上海帮趣网络技术有限公司</p>
+  <p><a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备19007521号</a></p>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
-    <script>
-        $("#change-more").on("click",function () {
-            $(this).prevAll().removeClass('active');
-            $("#Lmore").toggle();
-        })
+<script>
+  $("#change-more").on("click", function () {
+    $(this).prevAll().removeClass('active');
+    $("#Lmore").toggle();
+  })
 
-        $('[setL]').on("click",function () {
-            $(this).prevAll().removeClass('active');
-            $(this).addClass("active");
-        })
+  $('[setL]').on("click", function () {
+    $(this).prevAll().removeClass('active');
+    $(this).addClass("active");
+  })
 
-        if($.cookie("authenticationToken")){
-            $.ajax({
-                method: 'GET',
-                url: 'https://account.easyapi.com/api/account',
-                beforeSend: function (request) {
-                    request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-                },
-                success: function (data) {
-                    $("#photo").attr("src", data.photo + "!icon.jpg");
-                    $("#avatar").removeClass('dis_hide');
-                    $("#login").addClass('dis_hide');
-                    $("#console").removeClass('dis_hide');
-                }
-            });
-        }
-    </script>
-    <script src="https://static.easyapi.com/scripts/meiqia.js"></script>
+  if ($.cookie("authenticationToken")) {
+    $.ajax({
+      method: 'GET',
+      url: 'https://account.easyapi.com/api/account',
+      beforeSend: function (request) {
+        request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+      },
+      success: function (data) {
+        $("#photo").attr("src", data.photo + "!icon.jpg");
+        $("#avatar").removeClass('dis_hide');
+        $("#login").addClass('dis_hide');
+        $("#console").removeClass('dis_hide');
+      }
+    });
+  }
+</script>
+<script src="https://static.easyapi.com/scripts/meiqia.js"></script>
 </body>
 
 </html>
