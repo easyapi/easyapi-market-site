@@ -159,7 +159,7 @@
   padding: 0 15px;
 }
 
-.header_bg .u-info .u-btnbox span {
+.site-header .u-info .u-btnbox span {
   background: #fff;
   color: #5bc0de;
   padding: 8px 15px;
@@ -169,7 +169,112 @@
   display: inline-block;
 }
 
-.header_bg .u-info .u-btnbox span img {
+.site-header .u-info .u-btnbox span img {
   vertical-align: middle;
   margin-right: 10px;
+}
+
+
+.page-widhdraw .u-banner {
+  text-align: center;
+  background-image: url("../../static/imges/widhdraw/img3.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 300px;
+}
+.page-widhdraw .u-banner h3 {
+  padding-top: 120px;
+  display: block;
+  font-size: 3rem;
+  color: white;
+}
+.page-widhdraw .u-price {
+  text-align: center;
+  margin-top: 80px;
+}
+.page-widhdraw .u-price .item {
+  margin: 0 20px;
+  width: 370px;
+  background: white;
+  border-radius: 5px;
+  display: inline-block;
+  border: solid #eeeeee 1px;
+  cursor: pointer;
+}
+.page-widhdraw .u-price .item dt {
+  height: 170px;
+  border-bottom: solid #eeeeee 1px;
+}
+.page-widhdraw .u-price .item dt .name {
+  color: #555555;
+  padding-top: 25px;
+  font-size: 2.4rem;
+  display: block;
+}
+.page-widhdraw .u-price .item dt .en {
+  display: block;
+  padding-top: 2px;
+  color: #777777;
+}
+.page-widhdraw .u-price .item dt .price {
+  padding-top: 20px;
+  color: #555555;
+  font-size: 1.6rem;
+}
+.page-widhdraw .u-price .item dt .price span {
+  font-size: 3.6rem;
+}
+.page-widhdraw .u-price .item dd {
+  height: 190px;
+  padding-left: 50px;
+  padding-top: 60px;
+  box-sizing: border-box;
+}
+.page-widhdraw .u-price .item dd p {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  text-align: left;
+  color: #777777;
+}
+.page-widhdraw .u-price .item dd p span {
+  color: #555555;
+}
+.page-widhdraw .u-price .item dd p img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.page-widhdraw .u-price .item:hover {
+  border: solid white 1px;
+  -moz-box-shadow: 0px 0px 2px #7fe1f9;
+  -webkit-box-shadow: 0px 0px 2px #7fe1f9;
+  box-shadow: 0px 0px 2px #7fe1f9;
+}
+.page-widhdraw .m-topview {
+  padding: 30px;
+}
+.page-widhdraw .m-topview .item {
+  width: 24%;
+  padding-left: 80px;
+  box-sizing: border-box;
+  height: 56px;
+  position: relative;
+  display: inline-block;
+  border-right: solid #eeeeee 1px;
+}
+.page-widhdraw .m-topview .item h4 {
+  margin-top: 2px;
+  font-size: 2rem;
+  color: #555555;
+}
+.page-widhdraw .m-topview .item p {
+  font-size: 1.4rem;
+  color: #777777;
+  margin-top: 5px;
+}
+.page-widhdraw .m-topview .item:last-child {
+  border: 0px;
+}
+.page-widhdraw .m-topview .item img {
+  position: absolute;
+  left: 10px;
 }

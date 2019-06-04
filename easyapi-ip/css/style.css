@@ -166,3 +166,38 @@
   color: #777;
 
 }
+
+.page-ip .m-topview {
+  background: #fff;
+  margin-top: -110px;
+  text-align: center;
+  height: 220px;
+  border-radius: 10px;
+  -moz-box-shadow: 0px 2px 3px #7fe1f9;
+  -webkit-box-shadow: 0px 2px 3px #7fe1f9;
+  box-shadow: 0px 2px 3px #7fe1f9;
+}
+.page-ip .m-topview .u-ip {
+  padding: 20px 0;
+  font-size: 1.6rem;
+}
+.page-ip .m-topview .item {
+  margin-top: 25px;
+  width: 24%;
+  display: inline-block;
+  border-right: solid #eeeeee 1px;
+}
+.page-ip .m-topview .item a {
+  margin-top: 10px;
+  font-size: 1.8rem;
+  display: block;
+  color: #777777;
+}
+.page-ip .m-topview .item a:hover {
+  text-decoration: underline;
+  color: #5bc0de;
+}
+.page-ip .m-topview .item:last-child {
+  border: 0px;
+}
+

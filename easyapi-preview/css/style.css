@@ -162,3 +162,32 @@
 .page-preview .u-zhichi li {
   border: 1px solid #ddd
 }
+
+
+.page-preview {
+  background-size: cover;
+  padding: 80px 0;
+}
+.page-preview .u-title {
+  font-size: 3.6rem;
+  color: #555555;
+  border-bottom: solid #eeeeee 1px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.page-preview .u-zhichi {
+  margin-top: 40px;
+  text-align: center;
+}
+.page-preview .u-zhichi li {
+  width: 150px;
+  display: inline-block;
+  margin: 20px;
+  padding: 15px 0;
+  border: solid #eeeeee 1px;
+}
+.page-preview .u-zhichi li span {
+  display: block;
+  font-size: 2.4rem;
+  color: #777777;
+}

@@ -158,3 +158,119 @@
 .u-footer a {
   padding: 0 15px;
 }
+
+
+.page-liulinag {
+  margin-bottom: 50px;
+}
+.page-liulinag .u-liuliang {
+  background: url("../../static/imges/liuliang/img2.png");
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.page-liulinag .u-liuliang h3 {
+  font-size: 3.6rem;
+  color: white;
+  height: 220px;
+  line-height: 220px;
+  text-align: center;
+}
+.page-liulinag .u-liuliang .u-tab {
+  height: 80px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+.page-liulinag .u-liuliang .u-tab a {
+  display: inline-block;
+  width: 33%;
+  height: 80px;
+  line-height: 80px;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+.page-liulinag .u-liuliang .u-tab a img {
+  vertical-align: middle;
+}
+.page-liulinag .u-liuliang .u-tab a:hover,
+.page-liulinag .u-liuliang .u-tab a.active {
+  background: white;
+  color: #555555;
+}
+.page-liulinag .u-form {
+  padding: 20px 0;
+}
+.page-liulinag .u-form .item {
+  padding: 15px 0;
+}
+.page-liulinag .u-form .item span.nm {
+  font-size: 1.6rem;
+  width: 90px;
+  line-height: 30px;
+  float: left;
+}
+.page-liulinag .u-form .item .rb {
+  margin-left: 100px;
+}
+.page-liulinag .u-form .item .rb.input input {
+  border: solid #eeeeee 1px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 5px;
+  font-size: 1.4rem;
+}
+.page-liulinag .u-form .item .rb.u-label label {
+  margin-right: 20px;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  font-size: 1.6rem;
+}
+.page-liulinag .u-form .item .rb.u-label label input {
+  vertical-align: middle;
+}
+.page-liulinag .u-form .item .rb.u-change a {
+  display: inline-block;
+  border: solid #eeeeee 1px;
+  height: 30px;
+  line-height: 30px;
+  color: #5bc0de;
+  padding: 0 15px;
+}
+.page-liulinag .u-form .item .rb.u-change span {
+  display: inline-block;
+  border: solid #eeeeee 1px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 15px;
+  cursor: pointer;
+}
+.page-liulinag .u-form .item .rb.u-change span.active {
+  border: solid #5bc0de 1px;
+  color: #5bc0de;
+}
+.page-liulinag .u-form .item .rb.u-change span:hover {
+  background: #eeeeee;
+}
+.page-liulinag .u-form .item .rb.u-price {
+  line-height: 30px;
+}
+.page-liulinag .u-form .item .rb.u-price span {
+  font-size: 1.4rem;
+}
+.page-liulinag .u-form .item .rb.u-price em {
+  color: #777777;
+  text-decoration: line-through;
+}
+.page-liulinag .u-form .item .rb.u-ft .btn {
+  background: #5bc0de;
+  color: white;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 20px;
+  line-height: 40px;
+  display: inline-block;
+}

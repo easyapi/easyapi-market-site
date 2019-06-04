@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html  lang="zh">
+<html lang="zh">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -7,59 +7,36 @@
   <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
   <meta name="descriptions" content="空气质量指数（AQI）及相关信息"/>
   <meta name="keywords" content="空气质量,空气质量指数,AQI"/>
-  <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-  <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="">
+<body>
 <div class="header">
-  <div class="x-wp">
-    <div class="fp_head">
-      <ul class="fp_logo">
-        <li>
-          <a href="https://fapiao.easyapi.com/">
-            <img src="https://static.easyapi.com/images/market/logo.png">
-          </a>
-        </li>
-        <li>
-          <span>&nbsp;·&nbsp;</span>
-          <a href="index.html">
-            天气预报
-          </a>
-        </li>
+  <div class="container">
+    <div class="header">
+      <ul class="header-logo">
+        <li><a href="https://fapiao.easyapi.com/"><img src="https://static.easyapi.com/images/market/logo.png"></a></li>
+        <li><span>&nbsp;·&nbsp;</span><a href="index.html">天气预报</a></li>
       </ul>
-      <ul class="fa_list">
-        <li>
-          <a class="active" href="index.html">首页</a>
-        </li>
-        <li>
-          <a href="code.html">天气现象编码表</a>
-        </li>
-        <li>
-          <a href="aqi.html">空气质量指数</a>
-        </li>
-        <li>
-          <a target="_blank" href="https://www.easyapi.com/api/?documentId=17044">文档</a>
-        </li>
+      <ul class="nav">
+        <li><a class="active" href="index.html">首页</a></li>
+        <li><a href="code.html">天气现象编码表</a></li>
+        <li><a href="aqi.html">空气质量指数</a></li>
+        <li><a target="_blank" href="https://www.easyapi.com/api/?documentId=17044">文档</a></li>
       </ul>
-      <ul class="fa_fr">
-        <li id="login">
-          <a href="https://account.easyapi.com/login">登录</a>
-        </li>
-        <li class="fa_console dis_hide" id="console">
-          <a href="/console/">控制台</a>
-        </li>
-        <li class="fa_avatar dis_hide" id="avatar">
+      <ul class="side-nav">
+        <li id="login"><a href="https://account.easyapi.com/login">登录</a></li>
+        <li class="console dis_hide" id="console"><a href="/console/">控制台</a></li>
+        <li class="avatar dis_hide" id="avatar">
           <img id="photo" src="https://qiniu.easyapi.com/user/default.jpg!icon.jpg">
-          <div class="avatar_down">
-            <div class="avatar_item">
+          <div class="avatar-down">
+            <div class="avatar-item">
               <a href="https://account.easyapi.com/notification/">我的通知</a>
             </div>
-            <div class="avatar_item">
+            <div class="avatar-item">
               <a href="https://account.easyapi.com/setting/data">个人设置</a>
             </div>
-            <div class="avatar_item">
+            <div class="avatar-item">
               <a href="https://account.easyapi.com/logout">退出</a>
             </div>
           </div>
@@ -69,9 +46,8 @@
   </div>
 </div>
 
-<div class="page-weather x-wp">
+<div class="page-weather container">
   <div class="u-kongqiaqi">
-
     <div class="u-title">空气质量指数（AQI）及相关信息</div>
     <table class="table">
       <thead>
@@ -131,7 +107,6 @@
   </div>
 </div>
 
-
 <div class="footer clearfix">
   <p>
     <a href="https://www.easyapi.com/info/about">关于我们</a>
@@ -144,9 +119,7 @@
 </div>
 
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script type="text/javascript"
-        src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
   if ($.cookie("authenticationToken")) {
     $.ajax({
