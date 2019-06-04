@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
-<html  lang="zh">
+<html lang="zh">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>天气现象编码表 - EasyAPI服务平台</title>
   <link href="https://static.easyapi.com/css/site.min.css" rel="stylesheet"/>
+  <link href="https://static.easyapi.com/css/header.css" rel="stylesheet"/>
   <meta name="descriptions" content="中国气象局最新版本天气现象编码，增加了浓雾、强浓雾、中度霾、重度霾、严重霾、大雾、特强浓雾等天气现象。"/>
   <meta name="keywords" content="天气现象编码,浓雾,强浓雾,中度霾,重度霾,严重霾,大雾,特强浓雾"/>
   <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
@@ -12,7 +13,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="">
+<body>
 <div class="header">
   <div class="container">
     <div class="header">
@@ -67,161 +68,162 @@
       </ul>
     </div>
   </div>
+</div>
 
-  <div class="u-code page-weather container">
-    <div class="u-title">天气现象编码表</div>
-    <div class="u-tianqitex"><p>中国气象局最新版本天气现象编码，增加了浓雾、强浓雾、中度霾、重度霾、严重霾、大雾、特强浓雾等天气现象。
-      丫丫天气图标名称分2部分，如00_0，前为天气现象编码，_0表示白天，_1表示夜间。
-      大多数图标白天夜间一致，但晴、多云、阵雨、阵雪、浮尘、扬沙、强沙尘暴7种天气现象白天夜间不统一。
-      用户也可根据天气现象编码表，自行设计。</p>
-    </div>
-    <div class="u-tianqitable">
-      <table class="table">
-        <thead>
-        <tr>
-          <th width="20%">编码</th>
-          <th width="20%">中文描述</th>
-          <th width="20%">英文描述</th>
-          <th width="20%">白天图标</th>
-          <th width="20%">夜间图标</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>00</td>
-          <td>晴</td>
-          <td>Sunny/clear</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/00_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/00_1.png"></td>
-        </tr>
-        <tr>
-          <td>01</td>
-          <td>多云</td>
-          <td>Sunny</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/01_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/01_1.png"></td>
-        </tr>
-        <tr>
-          <td>02</td>
-          <td>阴</td>
-          <td>Overcast</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/02_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/02_1.png"></td>
-        </tr>
-        <tr>
-          <td>03</td>
-          <td>阵雨</td>
-          <td>Shower</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/03_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/03_1.png"></td>
-        </tr>
-        <tr>
-          <td>04</td>
-          <td>雷阵雨</td>
-          <td>Thundershower</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/04_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/04_1.png"></td>
-        </tr>
-        <tr>
-          <td>05</td>
-          <td>阵雨伴有冰雹</td>
-          <td>Thundershower with hail</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/05_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/05_1.png"></td>
-        </tr>
-        <tr>
-          <td>06</td>
-          <td>雨夹雪</td>
-          <td>Sleet</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/06_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/06_1.png"></td>
-        </tr>
-        <tr>
-          <td>07</td>
-          <td>小雨</td>
-          <td>Light rain</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/07_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/07_1.png"></td>
-        </tr>
-        <tr>
-          <td>08</td>
-          <td>中雨</td>
-          <td>Moderate rain</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/08_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/08_1.png"></td>
-        </tr>
-        <tr>
-          <td>09</td>
-          <td>大雨</td>
-          <td>Heavy storm</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/09_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/09_1.png"></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>暴雨</td>
-          <td>strom</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/10_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/10_1.png"></td>
-        </tr>
-        <tr>
-          <td>11</td>
-          <td>大暴雨</td>
-          <td>Heavy strom</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/11_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/11_1.png"></td>
-        </tr>
-        <tr>
-          <td>12</td>
-          <td>特大暴雨</td>
-          <td>Severe strom</td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/12_0.png"></td>
-          <td><img src="https://static.easyapi.com/images/market/weather/305155/12_1.png"></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="u-code page-weather container">
+  <div class="u-title">天气现象编码表</div>
+  <div class="u-tianqitex"><p>中国气象局最新版本天气现象编码，增加了浓雾、强浓雾、中度霾、重度霾、严重霾、大雾、特强浓雾等天气现象。
+    丫丫天气图标名称分2部分，如00_0，前为天气现象编码，_0表示白天，_1表示夜间。
+    大多数图标白天夜间一致，但晴、多云、阵雨、阵雪、浮尘、扬沙、强沙尘暴7种天气现象白天夜间不统一。
+    用户也可根据天气现象编码表，自行设计。</p>
   </div>
-
-
-  <div class="footer clearfix">
-    <p>
-      <a href="https://www.easyapi.com/info/about">关于我们</a>
-      <a href="https://www.easyapi.com/info/together">合作伙伴</a>
-      <a href="https://www.easyapi.com/info/contact">联系我们</a>
-      <a href="https://www.easyapi.com/info/donate">支持我们</a>
-    </p>
-    <p>Copyright © 2014～2019 上海帮趣网络技术有限公司</p>
-    <p><a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备19007521号</a></p>
+  <div class="u-tianqitable">
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="20%">编码</th>
+        <th width="20%">中文描述</th>
+        <th width="20%">英文描述</th>
+        <th width="20%">白天图标</th>
+        <th width="20%">夜间图标</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>00</td>
+        <td>晴</td>
+        <td>Sunny/clear</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/00_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/00_1.png"></td>
+      </tr>
+      <tr>
+        <td>01</td>
+        <td>多云</td>
+        <td>Sunny</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/01_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/01_1.png"></td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>阴</td>
+        <td>Overcast</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/02_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/02_1.png"></td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>阵雨</td>
+        <td>Shower</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/03_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/03_1.png"></td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>雷阵雨</td>
+        <td>Thundershower</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/04_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/04_1.png"></td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>阵雨伴有冰雹</td>
+        <td>Thundershower with hail</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/05_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/05_1.png"></td>
+      </tr>
+      <tr>
+        <td>06</td>
+        <td>雨夹雪</td>
+        <td>Sleet</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/06_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/06_1.png"></td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td>小雨</td>
+        <td>Light rain</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/07_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/07_1.png"></td>
+      </tr>
+      <tr>
+        <td>08</td>
+        <td>中雨</td>
+        <td>Moderate rain</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/08_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/08_1.png"></td>
+      </tr>
+      <tr>
+        <td>09</td>
+        <td>大雨</td>
+        <td>Heavy storm</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/09_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/09_1.png"></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>暴雨</td>
+        <td>strom</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/10_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/10_1.png"></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>大暴雨</td>
+        <td>Heavy strom</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/11_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/11_1.png"></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>特大暴雨</td>
+        <td>Severe strom</td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/12_0.png"></td>
+        <td><img src="https://static.easyapi.com/images/market/weather/305155/12_1.png"></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-  <script>
-    if ($.cookie("authenticationToken")) {
-      $.ajax({
-        method: 'GET',
-        url: 'https://account.easyapi.com/api/account',
-        beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-        },
-        success: function (data) {
-          $("#nickname").text("[" + data.nickname + "]");
-          $("#photo").attr("src", data.photo + "!icon.jpg");
-          $("#avatar").removeClass('dis_hide');
-          $("#login").addClass('dis_hide');
-          $("#console").removeClass('dis_hide');
+</div>
 
-        }
-      });
-    } else {
-      $("#avatar").addClass('dis_hide');
-      $("#login").removeClass('dis_hide');
-      $("#console").addClass('dis_hide');
 
-    }
-  </script>
+<div class="footer clearfix">
+  <p>
+    <a href="https://www.easyapi.com/info/about">关于我们</a>
+    <a href="https://www.easyapi.com/info/together">合作伙伴</a>
+    <a href="https://www.easyapi.com/info/contact">联系我们</a>
+    <a href="https://www.easyapi.com/info/donate">支持我们</a>
+  </p>
+  <p>Copyright © 2014～2019 上海帮趣网络技术有限公司</p>
+  <p><a href="http://www.miitbeian.gov.cn" target="_blank">沪ICP备19007521号</a></p>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+  if ($.cookie("authenticationToken")) {
+    $.ajax({
+      method: 'GET',
+      url: 'https://account.easyapi.com/api/account',
+      beforeSend: function (request) {
+        request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+      },
+      success: function (data) {
+        $("#nickname").text("[" + data.nickname + "]");
+        $("#photo").attr("src", data.photo + "!icon.jpg");
+        $("#avatar").removeClass('dis_hide');
+        $("#login").addClass('dis_hide');
+        $("#console").removeClass('dis_hide');
+
+      }
+    });
+  } else {
+    $("#avatar").addClass('dis_hide');
+    $("#login").removeClass('dis_hide');
+    $("#console").addClass('dis_hide');
+
+  }
+</script>
 
 </body>
 
