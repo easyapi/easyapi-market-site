@@ -192,7 +192,7 @@
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script>
   $(document).ready(function(){  
-    search()
+    searchIp()
   }); 
   if ($.cookie("authenticationToken")) {
     $.ajax({
@@ -209,7 +209,28 @@
       }
     });
   }
-  function search () {
+  // function searchIp () {
+  //     $.ajax({
+  //       headers: {
+  //         "Authorization": "Bearer "+($.cookie("authenticationToken"))
+  //       },
+  //       method: 'GET',
+  //       url: 'https://api2.easyapi.com/api/ip',
+  //       success: function (data) {
+  //       }
+  //     });
+  // }
+  function searchIp () {
+    $.ajax({
+      url: 'http://pv.sohu.com/cityjson?ie=utf-8',
+      dataType: "script",
+      success: function(){
+        search(returnCitySN)
+        }
+      });
+  }
+  
+  function search (returnCitySN) {
     var inputVal = returnCitySN['cip']
       $.ajax({
         method: 'GET',
