@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<header class="site-header" style="background-image:url(https://static.easyapi.com/images/market/weather/img1.png)">
+<header class="site-header" style="background-image:url(https://qiniu.easyapi.com/blue0712.png)">
   <div class="container">
     <div class="header">
       <ul class="header-logo">
@@ -46,13 +46,19 @@
         </li>
       </ul>
     </div>
-    <div class="u-info f-tac" style="margin-top:180px;">
+    <div class="u-info f-tac" style="margin-top:80px;">
       <h2 class="f-ff48 title">整合多家天气预报接口</h2>
       <div class="u-searbox">
-        <input type="text" placeholder="请输入城市名称或者IP地址">
-        <a href="" class="btn">
-          <img src="https://static.easyapi.com/images/market/ip/icon.png">
-        </a>
+        <input type="text" id="textValue" placeholder="请输入城市名称或者IP地址">
+        <!-- <a href="" class="btn"> -->
+          <div onclick="getWeathser()" class="btn">
+            <img src="https://static.easyapi.com/images/market/ip/icon.png">
+          </div>
+        <!-- </a> -->
+      </div>
+    </div>
+    <div style="padding-left: 27.5%;font-size: 16px">
+      <div class="u-info flex-c weather-result" id='weather-html'>
       </div>
     </div>
   </div>
@@ -183,7 +189,11 @@
 <script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script type="text/javascript"
         src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script>
+  $(document).ready(function(){  
+    search()
+  }); 
   if ($.cookie("authenticationToken")) {
     $.ajax({
       method: 'GET',
@@ -198,6 +208,135 @@
         $("#console").removeClass('dis_hide');
       }
     });
+  }
+  function search () {
+    var inputVal = returnCitySN['cip']
+      $.ajax({
+        method: 'GET',
+        data: {
+          ip: inputVal
+        },
+        url: 'https://api2.easyapi.com/weather/ip.json',
+        beforeSend: function (request) {
+          request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+        },
+        success: function (data) {
+          var weather = {} 
+          weather = JSON.parse(data.message)
+          var lbt = "";
+          lbt += '<div class="flex-r today">'
+              +'<img src="https://static.easyapi.com/images/market/weather/305155/'+weather.realtime.weather.img+'_0.png?imageView2/1/w/200/h/100/q/100" class="today-img" alt="">'
+              +'<div class="flex-c">'
+                +'<span style="font-size: 50px">'+weather.realtime.weather.temperature+'°</span>'
+                +'<span style="font-size:18px">'+weather.realtime.weather.info+'</span>'
+              +'</div>'
+              +'<div class="flex-c pd-l-20" style="font-size: 18px;">'
+                +'<div class="flex-r">'
+                  +'<div class="temperature">'
+                    +'<span>'+weather.weather[0].info.night[2]+'°~'+weather.weather[0].info.day[2]+'°</span>'
+                  +'</div>'
+                  +'<div class="humidity">'
+                    +'<span>相对湿度 '+weather.realtime.weather.humidity+'</span>'
+                  +'</div>'
+                +'</div>'
+                +'<div class="flex-r" style="margin-top:10px">'
+                  +'<div class="wind">'
+                    +'<span>'+weather.realtime.wind.direct+' '+weather.realtime.wind.power+'</span>'
+                  +'</div>'
+                  +'<div class="humidity">'
+                    +'<span>空气质量'+weather.pm25.pm25.quality+' '+weather.pm25.pm25.pm25+'</span>'
+                  +'</div>'
+                +'</div>'
+              +'</div>'
+          +'</div>'
+          +'<div class="flex-r future">'
+            +'<div class="flex-c mid-align">'
+                +'<span>今天</span>'
+                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[0].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
+                +'<span class="pd-t-10">'+weather.weather[0].info.day[1]+'</span>'
+                +'<span class="future_temperature">'+weather.weather[0].info.night[2]+'°/'+weather.weather[0].info.day[2]+'°</span>'
+            +'</div>'
+            +'<div class="flex-c mid-align second-day">'
+                +'<span>明天</span>'
+                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[1].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
+                +'<span class="pd-t-10">'+weather.weather[1].info.day[1]+'</span>'
+                +'<span class="future_temperature">'+weather.weather[1].info.night[2]+'°/'+weather.weather[1].info.day[2]+'°</span>'
+            +'</div>'
+            +'<div class="flex-c mid-align">'
+                +'<span>后天</span>'
+                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[2].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
+                +'<span class="pd-t-10">'+weather.weather[2].info.day[1]+'</span>'
+                +'<span class="future_temperature">'+weather.weather[2].info.night[2]+'°/'+weather.weather[2].info.day[2]+'°</span>'
+            +'</div>'
+          +'</div>';
+          $("#weather-html").empty()
+				$("#weather-html").append(lbt);
+        }
+      });
+  }
+  function getWeathser (inputVal) {
+    $.ajax({
+        method: 'GET',
+        data: {
+          cityName: $("#textValue").val(),
+        },
+        url: 'https://api.easyapi.com/weather/city.json',
+        beforeSend: function (request) {
+          request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+        },
+        success: function (data) {
+          var weather = {} 
+          weather = JSON.parse(data).data
+          var lbt = "";
+          lbt += '<div class="flex-r today">'
+              +'<img src="https://static.easyapi.com/images/market/weather/305155/'+weather.realtime.weather.img+'_0.png?imageView2/1/w/200/h/100/q/100" class="today-img" alt="">'
+              +'<div class="flex-c">'
+                +'<span style="font-size: 50px">'+weather.realtime.weather.temperature+'°</span>'
+                +'<span style="font-size:18px">'+weather.realtime.weather.info+'</span>'
+              +'</div>'
+              +'<div class="flex-c pd-l-20" style="font-size: 18px;">'
+                +'<div class="flex-r">'
+                  +'<div class="temperature">'
+                    +'<span>'+weather.weather[0].info.night[2]+'°~'+weather.weather[0].info.day[2]+'°</span>'
+                  +'</div>'
+                  +'<div class="humidity">'
+                    +'<span>相对湿度 '+weather.realtime.weather.humidity+'</span>'
+                  +'</div>'
+                +'</div>'
+                +'<div class="flex-r" style="margin-top:10px">'
+                  +'<div class="wind">'
+                    +'<span>'+weather.realtime.wind.direct+' '+weather.realtime.wind.power+'</span>'
+                  +'</div>'
+                  +'<div class="humidity">'
+                    +'<span>空气质量'+weather.pm25.pm25.quality+' '+weather.pm25.pm25.pm25+'</span>'
+                  +'</div>'
+                +'</div>'
+              +'</div>'
+          +'</div>'
+          +'<div class="flex-r future">'
+            +'<div class="flex-c mid-align">'
+                +'<span>今天</span>'
+                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[0].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
+                +'<span class="pd-t-10">'+weather.weather[0].info.day[1]+'</span>'
+                +'<span class="future_temperature">'+weather.weather[0].info.night[2]+'°/'+weather.weather[0].info.day[2]+'°</span>'
+            +'</div>'
+            +'<div class="flex-c mid-align second-day">'
+                +'<span>明天</span>'
+                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[1].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
+                +'<span class="pd-t-10">'+weather.weather[1].info.day[1]+'</span>'
+                +'<span class="future_temperature">'+weather.weather[1].info.night[2]+'°/'+weather.weather[1].info.day[2]+'°</span>'
+            +'</div>'
+            +'<div class="flex-c mid-align">'
+                +'<span>后天</span>'
+                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[2].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
+                +'<span class="pd-t-10">'+weather.weather[2].info.day[1]+'</span>'
+                +'<span class="future_temperature">'+weather.weather[2].info.night[2]+'°/'+weather.weather[2].info.day[2]+'°</span>'
+            +'</div>'
+          +'</div>';
+          $("#weather-html").empty()
+				$("#weather-html").append(lbt);
+          }
+      });
   }
 </script>
 

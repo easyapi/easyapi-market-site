@@ -163,7 +163,7 @@
     <h3>充值价格</h3>
     <div class="u-tab">
       <div class="container">
-        <a href="">
+        <a href="" >
           <img src="https://static.easyapi.com/images/market/liuliang/y1.png">
           移动流量
         </a>
@@ -183,7 +183,7 @@
       <div class="item">
         <span class="nm">手机号码</span>
         <div class="rb input">
-          <input type="text" placeholder="手机号码">
+          <input type="text"  id="mobile" placeholder="手机号码">
         </div>
       </div>
       <div class="item">
@@ -195,8 +195,8 @@
       </div>
       <div class="item">
         <span class="nm">充值流量</span>
-        <div class="rb u-change">
-          <span setL class="active">10M</span>
+        <div class="rb u-change" id="ul_list">
+          <!-- <span setL class="active">10M</span>
           <span setL>20M</span>
           <span setL>30M</span>
           <span setL>50M</span>
@@ -204,7 +204,7 @@
           <span setL>70M</span>
           <span setL>100M</span>
           <span setL>200M</span>
-          <a href="javascript:" id="change-more">更多</a>
+          <a href="javascript:" id="change-more">更多</a> -->
         </div>
       </div>
       <div class="item" id="Lmore" style="display: none">
@@ -216,14 +216,14 @@
       <div class="item">
         <span class="nm">接口价格</span>
         <div class="rb u-price">
-          <span class="f-c-warning">￥<i class="f-ff36">9.0</i></span>
-          <em>￥10.0</em>
+          <span class="f-c-warning">￥<i class="f-ff36" id='price'>0</i></span>
+          <!-- <em>￥10.0</em> -->
         </div>
       </div>
       <div class="item">
         <span class="nm"> </span>
         <div class="rb u-ft">
-          <a href="" class="btn">充值支付</a>
+          <div class="btn" onclick="exchange()">充值支付</div>
         </div>
       </div>
     </div>
@@ -254,16 +254,19 @@
 <script type="text/javascript"
         src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
+  var flowId= ''
   $("#change-more").on("click", function () {
     $(this).prevAll().removeClass('active');
     $("#Lmore").toggle();
   })
-
+  $(document).ready(function(){  
+    search()
+  }); 
   $('[setL]').on("click", function () {
     $(this).prevAll().removeClass('active');
     $(this).addClass("active");
   })
-
+  
   if ($.cookie("authenticationToken")) {
     $.ajax({
       method: 'GET',
@@ -279,6 +282,55 @@
       }
     });
   }
+  function choseName (id, price) {
+    $("#"+id).siblings().removeClass('active');
+    $("#"+id).addClass("active");
+    flowId = id
+    $("#price").html(price);
+  }
+  function search() {
+      $.ajax({
+        method: 'GET',
+        url: 'https://api2.easyapi.com/api/flowOrder/menu',
+        beforeSend: function (request) {
+          request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6d2pAYmFuZ3F1LmNvbSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE1NjUxNDczMzR9.Y6UU66ekSE5fYWQR_SnK1BM4xy_DOo5u9oWaEiDO8htUrKwQMSrlQfRIRcTjDjqfrSJzkRlOO_IfP2B5UmK-hg");
+        },
+        success: function (data) {
+          var lbt = "";
+				for (var v in data[0].flows) {
+          if (v == 0) {
+					  lbt += '<span setL onClick="choseName('+data[0].flows[v].id+','+data[0].flows[v].price+')" id='+data[0].flows[v].id+'>'+data[0].flows[v].name+'</span>';
+          } else {
+            lbt += '<span setL onClick="choseName('+data[0].flows[v].id+','+data[0].flows[v].price+')" id='+data[0].flows[v].id+'>'+data[0].flows[v].name+'</span>';
+          }
+				}
+				$("#ul_list").empty()
+				$("#ul_list").append(lbt);
+        }
+      });
+  }
+  function exchange () {
+    let obj = {
+      mobile: $('#mobile').val(),
+      flowId: flowId
+    }
+    $.ajax({
+        method: 'POST',
+        data: JSON.stringify(obj),
+        url: 'https://api2.easyapi.com/api/flowOrder/recharge',
+        headers: {
+            'content-type': 'application/json', // 或者不填
+            'Authorization': "Bearer " + ($.cookie("authenticationToken"))
+        },
+        // beforeSend: function (request) {
+        //   request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+        // },
+        success: function (data) {
+
+        }
+      });
+  }
+
 </script>
 <script src="https://static.easyapi.com/scripts/meiqia.js"></script>
 </body>
