@@ -196,15 +196,6 @@
       <div class="item">
         <span class="nm">充值流量</span>
         <div class="rb u-change" id="ul_list">
-          <!-- <span setL class="active">10M</span>
-          <span setL>20M</span>
-          <span setL>30M</span>
-          <span setL>50M</span>
-          <span setL>60M</span>
-          <span setL>70M</span>
-          <span setL>100M</span>
-          <span setL>200M</span>
-          <a href="javascript:" id="change-more">更多</a> -->
         </div>
       </div>
       <div class="item" id="Lmore" style="display: none">
@@ -223,7 +214,7 @@
       <div class="item">
         <span class="nm"> </span>
         <div class="rb u-ft">
-          <div class="btn" onclick="exchange()">充值支付</div>
+          <a class="btn" href="https://market.easyapi.com/service/4">充值支付</a>
         </div>
       </div>
     </div>
@@ -309,27 +300,27 @@
         }
       });
   }
-  function exchange () {
-    let obj = {
-      mobile: $('#mobile').val(),
-      flowId: flowId
-    }
-    $.ajax({
-        method: 'POST',
-        data: JSON.stringify(obj),
-        url: 'https://api2.easyapi.com/api/flowOrder/recharge',
-        headers: {
-            'content-type': 'application/json', // 或者不填
-            'Authorization': "Bearer " + ($.cookie("authenticationToken"))
-        },
-        // beforeSend: function (request) {
-        //   request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-        // },
-        success: function (data) {
+  // function exchange () {
+  //   let obj = {
+  //     mobile: $('#mobile').val(),
+  //     flowId: flowId
+  //   }
+  //   $.ajax({
+  //       method: 'POST',
+  //       data: JSON.stringify(obj),
+  //       url: 'https://api2.easyapi.com/api/flowOrder/recharge',
+  //       headers: {
+  //           'content-type': 'application/json', // 或者不填
+  //           'Authorization': "Bearer " + ($.cookie("authenticationToken"))
+  //       },
+  //       // beforeSend: function (request) {
+  //       //   request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+  //       // },
+  //       success: function (data) {
 
-        }
-      });
-  }
+  //       }
+  //     });
+  // }
 
 </script>
 <script src="https://static.easyapi.com/scripts/meiqia.js"></script>

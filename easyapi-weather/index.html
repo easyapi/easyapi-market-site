@@ -189,7 +189,6 @@
 <script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script type="text/javascript"
         src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script>
   $(document).ready(function(){  
     searchIp()
@@ -209,33 +208,28 @@
       }
     });
   }
-  // function searchIp () {
-  //     $.ajax({
-  //       headers: {
-  //         "Authorization": "Bearer "+($.cookie("authenticationToken"))
-  //       },
-  //       method: 'GET',
-  //       url: 'https://api2.easyapi.com/api/ip',
-  //       success: function (data) {
-  //       }
-  //     });
-  // }
-  function searchIp () {
-    $.ajax({
-      url: 'http://pv.sohu.com/cityjson?ie=utf-8',
-      dataType: "script",
-      success: function(){
-        search(returnCitySN)
+    function searchIp () {
+      $.ajax({
+        data: {
+          appKey:'X869YDFH159yi8f4',
+          appSecret:'Vx273b5SxB4kO8iP'
+        },
+        method: 'GET',
+        url: 'https://api2.easyapi.com/api/ip',
+        success: function (data) {
+          var result = JSON.parse(data)
+          if (result.code == '1') {
+            var ip = result.content.ip
+            search(ip)
+          }
         }
       });
   }
-  
-  function search (returnCitySN) {
-    var inputVal = returnCitySN['cip']
+  function search (ip) {
       $.ajax({
         method: 'GET',
         data: {
-          ip: inputVal
+          ip: ip
         },
         url: 'https://api2.easyapi.com/weather/ip.json',
         beforeSend: function (request) {
@@ -295,7 +289,7 @@
         }
       });
   }
-  function getWeathser (inputVal) {
+  function getWeathser () {
     $.ajax({
         method: 'GET',
         data: {
