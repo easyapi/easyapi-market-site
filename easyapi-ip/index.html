@@ -225,7 +225,7 @@
   if ($.cookie("authenticationToken")) {
     $.ajax({
       method: 'GET',
-      url: 'https://account.easyapi.com/api/account',
+      url: 'https://account-api.easyapi.com/api/account',
       beforeSend: function (request) {
         request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
       },
@@ -244,7 +244,7 @@
   $(document).ready(function () {
     $.ajax({
       method: 'GET',
-      url: 'https://account.easyapi.com/api/ip/token',
+      url: 'https://account-api.easyapi.com/api/ip/token',
       async: false,
       beforeSend: function (request) {
         request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));

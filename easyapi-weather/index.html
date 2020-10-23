@@ -190,13 +190,13 @@
 <script type="text/javascript"
         src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
-  $(document).ready(function(){  
+  $(document).ready(function(){
     searchIp()
-  }); 
+  });
   if ($.cookie("authenticationToken")) {
     $.ajax({
       method: 'GET',
-      url: 'https://account.easyapi.com/api/account',
+      url: 'https://account-api.easyapi.com/api/account',
       beforeSend: function (request) {
         request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
       },
@@ -236,7 +236,7 @@
           request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
         },
         success: function (data) {
-          var weather = {} 
+          var weather = {}
           weather = JSON.parse(data.message)
           var lbt = "";
           lbt += '<div class="flex-r today">'
@@ -300,7 +300,7 @@
           request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
         },
         success: function (data) {
-          var weather = {} 
+          var weather = {}
           weather = JSON.parse(data).data
           var lbt = "";
           lbt += '<div class="flex-r today">'
