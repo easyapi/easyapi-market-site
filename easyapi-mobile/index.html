@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html  lang="zh">
+<html lang="zh">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -12,7 +12,11 @@
   <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
+<style>
+  .active {
+    color: red;
+  }
+</style>
 <body>
 <div class="site-header" style="background-image:url(https://static.easyapi.com/images/market/liuliang/img1.png)">
   <div class="container">
@@ -163,15 +167,15 @@
     <h3>充值价格</h3>
     <div class="u-tab">
       <div class="container">
-        <a href="" >
+        <a class="active">
           <img src="https://static.easyapi.com/images/market/liuliang/y1.png">
           移动流量
         </a>
-        <a href="" class="active">
+        <a>
           <img src="https://static.easyapi.com/images/market/liuliang/y2.png">
           联通流量
         </a>
-        <a href="">
+        <a>
           <img src="https://static.easyapi.com/images/market/liuliang/y3.png">
           电信流量
         </a>
@@ -183,7 +187,7 @@
       <div class="item">
         <span class="nm">手机号码</span>
         <div class="rb input">
-          <input type="text"  id="mobile" placeholder="手机号码">
+          <input type="text" id="mobile" placeholder="手机号码">
         </div>
       </div>
       <div class="item">
@@ -241,16 +245,24 @@
   <p>Copyright © 2015～2021 帮趣团队</p>
 </div>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.suoluomei.com/common/js2.0/vue/v2.5.16/vue.js"></script>
 <script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script type="text/javascript"
         src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
-  var flowId= ''
+
+  $('a').click(function () {
+//        $(this).css('background', 'blue').siblings().css('background', 'pink');
+    $(this).addClass('active').siblings().removeClass('active');
+  });
+
+
+  var flowId = ''
   $("#change-more").on("click", function () {
     $(this).prevAll().removeClass('active');
     $("#Lmore").toggle();
   })
-  $(document).ready(function(){
+  $(document).ready(function () {
     search()
   });
   $('[setL]').on("click", function () {
@@ -273,33 +285,36 @@
       }
     });
   }
-  function choseName (id, price) {
-    $("#"+id).siblings().removeClass('active');
-    $("#"+id).addClass("active");
+
+  function choseName(id, price) {
+    $("#" + id).siblings().removeClass('active');
+    $("#" + id).addClass("active");
     flowId = id
     $("#price").html(price);
   }
+
   function search() {
-      $.ajax({
-        method: 'GET',
-        url: 'https://api2.easyapi.com/api/flowOrder/menu',
-        beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6d2pAYmFuZ3F1LmNvbSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE1NjUxNDczMzR9.Y6UU66ekSE5fYWQR_SnK1BM4xy_DOo5u9oWaEiDO8htUrKwQMSrlQfRIRcTjDjqfrSJzkRlOO_IfP2B5UmK-hg");
-        },
-        success: function (data) {
-          var lbt = "";
-				for (var v in data[0].flows) {
+    $.ajax({
+      method: 'GET',
+      url: 'https://api2.easyapi.com/api/flowOrder/menu',
+      beforeSend: function (request) {
+        request.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6d2pAYmFuZ3F1LmNvbSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE1NjUxNDczMzR9.Y6UU66ekSE5fYWQR_SnK1BM4xy_DOo5u9oWaEiDO8htUrKwQMSrlQfRIRcTjDjqfrSJzkRlOO_IfP2B5UmK-hg");
+      },
+      success: function (data) {
+        var lbt = "";
+        for (var v in data[0].flows) {
           if (v == 0) {
-					  lbt += '<span setL onClick="choseName('+data[0].flows[v].id+','+data[0].flows[v].price+')" id='+data[0].flows[v].id+'>'+data[0].flows[v].name+'</span>';
+            lbt += '<span setL onClick="choseName(' + data[0].flows[v].id + ',' + data[0].flows[v].price + ')" id=' + data[0].flows[v].id + '>' + data[0].flows[v].name + '</span>';
           } else {
-            lbt += '<span setL onClick="choseName('+data[0].flows[v].id+','+data[0].flows[v].price+')" id='+data[0].flows[v].id+'>'+data[0].flows[v].name+'</span>';
+            lbt += '<span setL onClick="choseName(' + data[0].flows[v].id + ',' + data[0].flows[v].price + ')" id=' + data[0].flows[v].id + '>' + data[0].flows[v].name + '</span>';
           }
-				}
-				$("#ul_list").empty()
-				$("#ul_list").append(lbt);
         }
-      });
+        $("#ul_list").empty()
+        $("#ul_list").append(lbt);
+      }
+    });
   }
+
   // function exchange () {
   //   let obj = {
   //     mobile: $('#mobile').val(),
