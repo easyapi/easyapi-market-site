@@ -152,22 +152,9 @@
 <link rel="stylesheet" href="https://cdn.bootcss.com/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
-  if ($.cookie("authenticationToken")) {
-    $.ajax({
-      method: 'GET',
-      url: 'https://account-api.easyapi.com/api/account',
-      beforeSend: function (request) {
-        request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-      },
-      success: function (data) {
-        $("#photo").attr("src", data.photo + "!icon.jpg");
-        $("#avatar").removeClass('dis_hide');
-        $("#login").addClass('dis_hide');
-        $("#console").removeClass('dis_hide');
-      }
-    });
-  }
+
 </script>
+<script src="https://static.easyapi.com/scripts/market/user.js"></script>
 <script src="https://static.easyapi.com/scripts/meiqia.js"></script>
 </body>
 

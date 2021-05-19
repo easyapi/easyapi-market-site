@@ -221,22 +221,8 @@
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
 <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src='https://cdn.bootcss.com/jstimezonedetect/1.0.6/jstz.min.js'></script>
+<script src="https://static.easyapi.com/scripts/market/user.js"></script>
 <script>
-  if ($.cookie("authenticationToken")) {
-    $.ajax({
-      method: 'GET',
-      url: 'https://account-api.easyapi.com/api/account',
-      beforeSend: function (request) {
-        request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-      },
-      success: function (data) {
-        $("#photo").attr("src", data.photo + "!icon.jpg");
-        $("#avatar").removeClass('dis_hide');
-        $("#login").addClass('dis_hide');
-        $("#console").removeClass('dis_hide');
-      }
-    });
-  }
 
   var timezone = jstz.determine();
   console.log('Your timezone is: ' + timezone.name());

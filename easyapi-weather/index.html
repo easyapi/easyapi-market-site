@@ -51,9 +51,9 @@
       <div class="u-searbox">
         <input type="text" id="textValue" placeholder="请输入城市名称或者IP地址">
         <!-- <a href="" class="btn"> -->
-          <div onclick="getWeathser()" class="btn">
-            <img src="https://static.easyapi.com/images/market/ip/icon.png">
-          </div>
+        <div onclick="getWeathser()" class="btn">
+          <img src="https://static.easyapi.com/images/market/ip/icon.png">
+        </div>
         <!-- </a> -->
       </div>
     </div>
@@ -187,171 +187,159 @@
 </footer>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script type="text/javascript"
-        src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://static.easyapi.com/scripts/market/user.js"></script>
 <script>
-  $(document).ready(function(){
+  $(document).ready(function () {
     searchIp()
   });
-  if ($.cookie("authenticationToken")) {
+
+  function searchIp() {
+    $.ajax({
+      data: {
+        appKey: 'X869YDFH159yi8f4',
+        appSecret: 'Vx273b5SxB4kO8iP'
+      },
+      method: 'GET',
+      url: 'https://api2.easyapi.com/api/ip',
+      success: function (data) {
+        var result = JSON.parse(data)
+        if (result.code == '1') {
+          var ip = result.content.ip
+          search(ip)
+        }
+      }
+    });
+  }
+
+  function search(ip) {
     $.ajax({
       method: 'GET',
-      url: 'https://account-api.easyapi.com/api/account',
+      data: {
+        ip: ip
+      },
+      url: 'https://api2.easyapi.com/weather/ip.json',
       beforeSend: function (request) {
         request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
       },
       success: function (data) {
-        $("#photo").attr("src", data.photo + "!icon.jpg");
-        $("#avatar").removeClass('dis_hide');
-        $("#login").addClass('dis_hide');
-        $("#console").removeClass('dis_hide');
+        var weather = {}
+        weather = JSON.parse(data.message)
+        var lbt = "";
+        lbt += '<div class="flex-r today">'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + weather.realtime.weather.img + '_0.png?imageView2/1/w/200/h/100/q/100" class="today-img" alt="">'
+          + '<div class="flex-c">'
+          + '<span style="font-size: 50px">' + weather.realtime.weather.temperature + '°</span>'
+          + '<span style="font-size:18px">' + weather.realtime.weather.info + '</span>'
+          + '</div>'
+          + '<div class="flex-c pd-l-20" style="font-size: 18px;">'
+          + '<div class="flex-r">'
+          + '<div class="temperature">'
+          + '<span>' + weather.weather[0].info.night[2] + '°~' + weather.weather[0].info.day[2] + '°</span>'
+          + '</div>'
+          + '<div class="humidity">'
+          + '<span>相对湿度 ' + weather.realtime.weather.humidity + '</span>'
+          + '</div>'
+          + '</div>'
+          + '<div class="flex-r" style="margin-top:10px">'
+          + '<div class="wind">'
+          + '<span>' + weather.realtime.wind.direct + ' ' + weather.realtime.wind.power + '</span>'
+          + '</div>'
+          + '<div class="humidity">'
+          + '<span>空气质量' + weather.pm25.pm25.quality + ' ' + weather.pm25.pm25.pm25 + '</span>'
+          + '</div>'
+          + '</div>'
+          + '</div>'
+          + '</div>'
+          + '<div class="flex-r future">'
+          + '<div class="flex-c mid-align">'
+          + '<span>今天</span>'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + (weather.weather[0].info.day[0].length == 1 ? ('0' + weather.weather[0].info.day[0]) : weather.weather[0].info.day[0]) + '_0.png" alt="">'
+          + '<span class="pd-t-10">' + weather.weather[0].info.day[1] + '</span>'
+          + '<span class="future_temperature">' + weather.weather[0].info.night[2] + '°/' + weather.weather[0].info.day[2] + '°</span>'
+          + '</div>'
+          + '<div class="flex-c mid-align second-day">'
+          + '<span>明天</span>'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + (weather.weather[1].info.day[0].length == 1 ? ('0' + weather.weather[0].info.day[0]) : weather.weather[0].info.day[0]) + '_0.png" alt="">'
+          + '<span class="pd-t-10">' + weather.weather[1].info.day[1] + '</span>'
+          + '<span class="future_temperature">' + weather.weather[1].info.night[2] + '°/' + weather.weather[1].info.day[2] + '°</span>'
+          + '</div>'
+          + '<div class="flex-c mid-align">'
+          + '<span>后天</span>'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + (weather.weather[2].info.day[0].length == 1 ? ('0' + weather.weather[0].info.day[0]) : weather.weather[0].info.day[0]) + '_0.png" alt="">'
+          + '<span class="pd-t-10">' + weather.weather[2].info.day[1] + '</span>'
+          + '<span class="future_temperature">' + weather.weather[2].info.night[2] + '°/' + weather.weather[2].info.day[2] + '°</span>'
+          + '</div>'
+          + '</div>';
+        $("#weather-html").empty()
+        $("#weather-html").append(lbt);
       }
     });
   }
-    function searchIp () {
-      $.ajax({
-        data: {
-          appKey:'X869YDFH159yi8f4',
-          appSecret:'Vx273b5SxB4kO8iP'
-        },
-        method: 'GET',
-        url: 'https://api2.easyapi.com/api/ip',
-        success: function (data) {
-          var result = JSON.parse(data)
-          if (result.code == '1') {
-            var ip = result.content.ip
-            search(ip)
-          }
-        }
-      });
-  }
-  function search (ip) {
-      $.ajax({
-        method: 'GET',
-        data: {
-          ip: ip
-        },
-        url: 'https://api2.easyapi.com/weather/ip.json',
-        beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-        },
-        success: function (data) {
-          var weather = {}
-          weather = JSON.parse(data.message)
-          var lbt = "";
-          lbt += '<div class="flex-r today">'
-              +'<img src="https://static.easyapi.com/images/market/weather/305155/'+weather.realtime.weather.img+'_0.png?imageView2/1/w/200/h/100/q/100" class="today-img" alt="">'
-              +'<div class="flex-c">'
-                +'<span style="font-size: 50px">'+weather.realtime.weather.temperature+'°</span>'
-                +'<span style="font-size:18px">'+weather.realtime.weather.info+'</span>'
-              +'</div>'
-              +'<div class="flex-c pd-l-20" style="font-size: 18px;">'
-                +'<div class="flex-r">'
-                  +'<div class="temperature">'
-                    +'<span>'+weather.weather[0].info.night[2]+'°~'+weather.weather[0].info.day[2]+'°</span>'
-                  +'</div>'
-                  +'<div class="humidity">'
-                    +'<span>相对湿度 '+weather.realtime.weather.humidity+'</span>'
-                  +'</div>'
-                +'</div>'
-                +'<div class="flex-r" style="margin-top:10px">'
-                  +'<div class="wind">'
-                    +'<span>'+weather.realtime.wind.direct+' '+weather.realtime.wind.power+'</span>'
-                  +'</div>'
-                  +'<div class="humidity">'
-                    +'<span>空气质量'+weather.pm25.pm25.quality+' '+weather.pm25.pm25.pm25+'</span>'
-                  +'</div>'
-                +'</div>'
-              +'</div>'
-          +'</div>'
-          +'<div class="flex-r future">'
-            +'<div class="flex-c mid-align">'
-                +'<span>今天</span>'
-                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[0].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
-                +'<span class="pd-t-10">'+weather.weather[0].info.day[1]+'</span>'
-                +'<span class="future_temperature">'+weather.weather[0].info.night[2]+'°/'+weather.weather[0].info.day[2]+'°</span>'
-            +'</div>'
-            +'<div class="flex-c mid-align second-day">'
-                +'<span>明天</span>'
-                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[1].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
-                +'<span class="pd-t-10">'+weather.weather[1].info.day[1]+'</span>'
-                +'<span class="future_temperature">'+weather.weather[1].info.night[2]+'°/'+weather.weather[1].info.day[2]+'°</span>'
-            +'</div>'
-            +'<div class="flex-c mid-align">'
-                +'<span>后天</span>'
-                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[2].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
-                +'<span class="pd-t-10">'+weather.weather[2].info.day[1]+'</span>'
-                +'<span class="future_temperature">'+weather.weather[2].info.night[2]+'°/'+weather.weather[2].info.day[2]+'°</span>'
-            +'</div>'
-          +'</div>';
-          $("#weather-html").empty()
-				$("#weather-html").append(lbt);
-        }
-      });
-  }
-  function getWeathser () {
+
+  function getWeathser() {
     $.ajax({
-        method: 'GET',
-        data: {
-          cityName: $("#textValue").val(),
-        },
-        url: 'https://api.easyapi.com/weather/city.json',
-        beforeSend: function (request) {
-          request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
-        },
-        success: function (data) {
-          var weather = {}
-          weather = JSON.parse(data).data
-          var lbt = "";
-          lbt += '<div class="flex-r today">'
-              +'<img src="https://static.easyapi.com/images/market/weather/305155/'+weather.realtime.weather.img+'_0.png?imageView2/1/w/200/h/100/q/100" class="today-img" alt="">'
-              +'<div class="flex-c">'
-                +'<span style="font-size: 50px">'+weather.realtime.weather.temperature+'°</span>'
-                +'<span style="font-size:18px">'+weather.realtime.weather.info+'</span>'
-              +'</div>'
-              +'<div class="flex-c pd-l-20" style="font-size: 18px;">'
-                +'<div class="flex-r">'
-                  +'<div class="temperature">'
-                    +'<span>'+weather.weather[0].info.night[2]+'°~'+weather.weather[0].info.day[2]+'°</span>'
-                  +'</div>'
-                  +'<div class="humidity">'
-                    +'<span>相对湿度 '+weather.realtime.weather.humidity+'</span>'
-                  +'</div>'
-                +'</div>'
-                +'<div class="flex-r" style="margin-top:10px">'
-                  +'<div class="wind">'
-                    +'<span>'+weather.realtime.wind.direct+' '+weather.realtime.wind.power+'</span>'
-                  +'</div>'
-                  +'<div class="humidity">'
-                    +'<span>空气质量'+weather.pm25.pm25.quality+' '+weather.pm25.pm25.pm25+'</span>'
-                  +'</div>'
-                +'</div>'
-              +'</div>'
-          +'</div>'
-          +'<div class="flex-r future">'
-            +'<div class="flex-c mid-align">'
-                +'<span>今天</span>'
-                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[0].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
-                +'<span class="pd-t-10">'+weather.weather[0].info.day[1]+'</span>'
-                +'<span class="future_temperature">'+weather.weather[0].info.night[2]+'°/'+weather.weather[0].info.day[2]+'°</span>'
-            +'</div>'
-            +'<div class="flex-c mid-align second-day">'
-                +'<span>明天</span>'
-                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[1].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
-                +'<span class="pd-t-10">'+weather.weather[1].info.day[1]+'</span>'
-                +'<span class="future_temperature">'+weather.weather[1].info.night[2]+'°/'+weather.weather[1].info.day[2]+'°</span>'
-            +'</div>'
-            +'<div class="flex-c mid-align">'
-                +'<span>后天</span>'
-                +'<img src="https://static.easyapi.com/images/market/weather/305155/'+(weather.weather[2].info.day[0].length==1?('0'+weather.weather[0].info.day[0]):weather.weather[0].info.day[0])+'_0.png" alt="">'
-                +'<span class="pd-t-10">'+weather.weather[2].info.day[1]+'</span>'
-                +'<span class="future_temperature">'+weather.weather[2].info.night[2]+'°/'+weather.weather[2].info.day[2]+'°</span>'
-            +'</div>'
-          +'</div>';
-          $("#weather-html").empty()
-				$("#weather-html").append(lbt);
-          }
-      });
+      method: 'GET',
+      data: {
+        cityName: $("#textValue").val(),
+      },
+      url: 'https://api.easyapi.com/weather/city.json',
+      beforeSend: function (request) {
+        request.setRequestHeader("Authorization", "Bearer " + ($.cookie("authenticationToken")));
+      },
+      success: function (data) {
+        var weather = {}
+        weather = JSON.parse(data).data
+        var lbt = "";
+        lbt += '<div class="flex-r today">'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + weather.realtime.weather.img + '_0.png?imageView2/1/w/200/h/100/q/100" class="today-img" alt="">'
+          + '<div class="flex-c">'
+          + '<span style="font-size: 50px">' + weather.realtime.weather.temperature + '°</span>'
+          + '<span style="font-size:18px">' + weather.realtime.weather.info + '</span>'
+          + '</div>'
+          + '<div class="flex-c pd-l-20" style="font-size: 18px;">'
+          + '<div class="flex-r">'
+          + '<div class="temperature">'
+          + '<span>' + weather.weather[0].info.night[2] + '°~' + weather.weather[0].info.day[2] + '°</span>'
+          + '</div>'
+          + '<div class="humidity">'
+          + '<span>相对湿度 ' + weather.realtime.weather.humidity + '</span>'
+          + '</div>'
+          + '</div>'
+          + '<div class="flex-r" style="margin-top:10px">'
+          + '<div class="wind">'
+          + '<span>' + weather.realtime.wind.direct + ' ' + weather.realtime.wind.power + '</span>'
+          + '</div>'
+          + '<div class="humidity">'
+          + '<span>空气质量' + weather.pm25.pm25.quality + ' ' + weather.pm25.pm25.pm25 + '</span>'
+          + '</div>'
+          + '</div>'
+          + '</div>'
+          + '</div>'
+          + '<div class="flex-r future">'
+          + '<div class="flex-c mid-align">'
+          + '<span>今天</span>'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + (weather.weather[0].info.day[0].length == 1 ? ('0' + weather.weather[0].info.day[0]) : weather.weather[0].info.day[0]) + '_0.png" alt="">'
+          + '<span class="pd-t-10">' + weather.weather[0].info.day[1] + '</span>'
+          + '<span class="future_temperature">' + weather.weather[0].info.night[2] + '°/' + weather.weather[0].info.day[2] + '°</span>'
+          + '</div>'
+          + '<div class="flex-c mid-align second-day">'
+          + '<span>明天</span>'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + (weather.weather[1].info.day[0].length == 1 ? ('0' + weather.weather[0].info.day[0]) : weather.weather[0].info.day[0]) + '_0.png" alt="">'
+          + '<span class="pd-t-10">' + weather.weather[1].info.day[1] + '</span>'
+          + '<span class="future_temperature">' + weather.weather[1].info.night[2] + '°/' + weather.weather[1].info.day[2] + '°</span>'
+          + '</div>'
+          + '<div class="flex-c mid-align">'
+          + '<span>后天</span>'
+          + '<img src="https://static.easyapi.com/images/market/weather/305155/' + (weather.weather[2].info.day[0].length == 1 ? ('0' + weather.weather[0].info.day[0]) : weather.weather[0].info.day[0]) + '_0.png" alt="">'
+          + '<span class="pd-t-10">' + weather.weather[2].info.day[1] + '</span>'
+          + '<span class="future_temperature">' + weather.weather[2].info.night[2] + '°/' + weather.weather[2].info.day[2] + '°</span>'
+          + '</div>'
+          + '</div>';
+        $("#weather-html").empty()
+        $("#weather-html").append(lbt);
+      }
+    });
   }
 </script>
 
