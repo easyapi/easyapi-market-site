@@ -11,6 +11,22 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
+<style>
+  .m-serve {
+    background: #f5f5f5;
+  }
+
+  .u-title {
+    font-size: 36px;
+    margin: 10px 0;
+  }
+
+  .u-tex {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+</style>
+
 <body>
 <div class="site-header" style="background-image:url(https://static.easyapi.com/images/market/ip/img1.png)">
   <div class="container">
@@ -40,49 +56,16 @@
       </ul>
     </div>
     <div class="u-info f-tac" style="margin-top:150px;">
-      <h2 class="f-ff48 title">专业级IP查询服务免费输出</h2>
-      <p class="f-ff20 tex">整合国内IP专业级平台数据进行合并分析</p>
+      <p class="u-title">专业级IP查询服务免费输出</p>
+      <p class="u-tex">整合国内IP专业级平台数据进行合并分析</p>
       <div class="u-searbox">
-        <input type="text" placeholder="">
-        <a href="" class="btn">
+        <input type="text" id="searchIp" placeholder="请输入IP地址，如：8.8.8.8">
+        <a href="javascript:;" class="btn" id="searchButton">
           <img src="https://static.easyapi.com/images/market/ip/icon.png">
         </a>
       </div>
     </div>
   </div>
-</div>
-
-<div class="container page-ip">
-  <div class="m-topview">
-    <div class="u-ip"></div>
-    <div class="item first">
-      <img src="https://static.easyapi.com/images/market/ip/ic9.png">
-      <span></span>
-    </div>
-    <div class="item second">
-      <img src="https://static.easyapi.com/images/market/ip/ic10.png">
-      <span></span>
-    </div>
-    <div class="item third">
-      <img src="https://static.easyapi.com/images/market/ip/ic11.png">
-      <span></span>
-    </div>
-    <div class="item forth">
-      <img src="https://static.easyapi.com/images/market/ip/ic12.png">
-      <span></span>
-    </div>
-  </div>
-  <div class="u-info f-tac" style="margin-top:150px;">
-    <h2 class="f-ff48 title">专业级IP查询服务免费输出</h2>
-    <p class="f-ff20 tex">整合国内IP专业级平台数据进行合并分析</p>
-    <div class="u-searbox">
-      <input type="text" id="searchIp" placeholder="请输入IP地址，如：8.8.8.8">
-      <a href="javascript:;" class="btn" id="searchButton">
-        <img src="https://static.easyapi.com/images/market/ip/icon.png">
-      </a>
-    </div>
-  </div>
-</div>
 </div>
 
 <div class="container page-ip">
@@ -149,7 +132,7 @@
   </div>
 </div>
 
-<div class="m-centerbox f-bc-gray">
+<div class="m-centerbox f-bc-gray m-serve">
   <div class="container">
     <div class="u-title">我们的原理</div>
     <div class="u-oneimg">
@@ -263,26 +246,26 @@
       }
     });
 
-  window.onload = function () {
-    $(".u-searbox input").val("120.195.201.69");
-    $(".m-topview .u-ip").text('您当前的ip: 120.195.201.69');
-    $(".first span").text("江苏无锡");
-    $(".second span").text("移动");
-    $(".third span").text("120.29885729017,31.564396744413");
-    $(".forth span").text("Asia/shanghai");
-  };
-
-  $(".u-searbox .btn").click(function () {
-    if ($(".u-searbox input").val() == '120.195.201.69') {
+    window.onload = function () {
+      $(".u-searbox input").val("120.195.201.69");
       $(".m-topview .u-ip").text('您当前的ip: 120.195.201.69');
       $(".first span").text("江苏无锡");
       $(".second span").text("移动");
       $(".third span").text("120.29885729017,31.564396744413");
       $(".forth span").text("Asia/shanghai");
-    } else {
-      alert("此IP地址暂不支持")
-    }
-  })
+    };
+
+    $(".u-searbox .btn").click(function () {
+      if ($(".u-searbox input").val() == '120.195.201.69') {
+        $(".m-topview .u-ip").text('您当前的ip: 120.195.201.69');
+        $(".first span").text("江苏无锡");
+        $(".second span").text("移动");
+        $(".third span").text("120.29885729017,31.564396744413");
+        $(".forth span").text("Asia/shanghai");
+      } else {
+        alert("此IP地址暂不支持")
+      }
+    })
 </script>
 <script src="https://static.easyapi.com/scripts/meiqia.js"></script>
 </body>
