@@ -34,7 +34,6 @@ EasyAPI服务站点，是一个纯静态项目工程。
 | easyapi-qrcode      |  EasyAPI二维码服务         |  https://qrcode.easyapi.com    |
 | easyapi-shop        |  EasyAPI微商城             | https://shop.easyapi.com    |
 | easyapi-sms         |  EasyAPI短信服务           | https://sms.easyapi.com    |
-| easyapi-update      |  EasyAPI应用检查更新       |  https://update.easyapi.com    |
 | easyapi-weather     |  EasyAPI天气预报           |  https://weather.easyapi.com    |
 | easyapi-withdraw    |  EasyAPI快速提现           |  https://withdraw.easyapi.com    |
 | easyapi-yuyin       |  EasyAPI语音服务           |  https://yuyin.easyapi.com    |
