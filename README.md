@@ -20,6 +20,7 @@ EasyAPI服务站点，是一个纯静态项目工程。
 | ------------------  | ------------------------ |  ------------------------    |
 | easyapi-ad          |  EasyAPI广告管家           |  https://ad.easyapi.com    |
 | easyapi-clockin     |  EasyAPI签到打卡           |  https://clockin.easyapi.com    | 
+| easyapi-cms         |  EasyAPI内容管理           |  https://cms.easyapi.com    |
 | easyapi-convert     |  EasyAPI文档转换           |  https://convert.easyapi.com    |
 | easyapi-feedback    |  EasyAPI意见反馈           |  https://feedback.easyapi.com    |
 | easyapi-invoice     |  EasyAPI发票查验           |  https://invoice.easyapi.com    |
@@ -27,7 +28,6 @@ EasyAPI服务站点，是一个纯静态项目工程。
 | easyapi-jiayouka    |  EasyAPI加油卡充值         |  https://jiayouka.easyapi.com    |
 | easyapi-lottery     |  EasyAPI抽奖活动           |  https://lottery.easyapi.com    |
 | easyapi-mobile      |  EasyAPI手机话费流量       |  https://mobile.easyapi.com    |
-| easyapi-news        |  EasyAPI新闻资讯           |  https://news.easyapi.com    |
 | easyapi-parse       |  EasyAPI网页解析           |  https://parse.easyapi.com    |
 | easyapi-poster      |  EasyAPI二维码海报         |  https://poster.easyapi.com    |
 | easyapi-preview     |  EasyAPI文档预览           |  https://preview.easyapi.com    |
