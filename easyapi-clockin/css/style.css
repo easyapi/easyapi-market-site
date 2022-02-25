@@ -210,3 +210,46 @@
 .u-footer a {
   padding: 0 15px;
 }
+
+.clockin-apps {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.clockin-apps li {
+  width: 30%;
+}
+
+.clockin-img {
+  width: 165px;
+  height: 165px;
+}
+
+.clockin-title {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.clockin-content {
+  font-size: 14px;
+  line-height: 20px;
+  color: #999;
+}
+
+.clockin-plays {
+  width: 1200px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.clockin-plays li {
+  width: 28%;
+  margin-top: 20px;
+}
+
+.clockin-plays li img {
+  width: 100%;
+}
